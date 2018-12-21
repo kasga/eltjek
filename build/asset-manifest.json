@@ -1,0 +1,14 @@
+{
+  "main.css": "./static/css/main.7b8457b8.chunk.css",
+  "main.js": "./static/js/main.63711579.chunk.js",
+  "main.js.map": "./static/js/main.63711579.chunk.js.map",
+  "static/js/1.82b4a83d.chunk.js": "./static/js/1.82b4a83d.chunk.js",
+  "static/js/1.82b4a83d.chunk.js.map": "./static/js/1.82b4a83d.chunk.js.map",
+  "runtime~main.js": "./static/js/runtime~main.4a686d48.js",
+  "runtime~main.js.map": "./static/js/runtime~main.4a686d48.js.map",
+  "static/media/index.scss": "./static/media/OrstedSans-Bold.df68a806.ttf",
+  "static/css/main.7b8457b8.chunk.css.map": "./static/css/main.7b8457b8.chunk.css.map",
+  "index.html": "./index.html",
+  "precache-manifest.c264e6959d29557fa39a37b55dae21ba.js": "./precache-manifest.c264e6959d29557fa39a37b55dae21ba.js",
+  "service-worker.js": "./service-worker.js"
+}

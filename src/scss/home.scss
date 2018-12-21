@@ -1,0 +1,51 @@
+#o-home{
+    position: relative;
+    max-width:700px;
+    margin:0 auto;
+    padding:180px 100px 100px 100px;
+
+    .headline1{
+        width:63%;
+        margin:0 auto;
+    }
+    .o-eltjek{
+        position: absolute;
+        width: 100%;
+        top:45px;
+        left:0;
+        text-align: center;
+        font-family: $font-bold;
+    } 
+    .o-eltjek-circle{
+        position: relative;
+        width:42px;
+        height:42px;
+        background-color: $yellow;
+        border-radius: 100px;
+        left: calc(50% - 21px);
+        padding-top:12px;
+        margin-bottom:10px;
+
+        img{
+            vertical-align: top;
+        }
+    }
+    .o-house-options{
+        margin-top:50px;
+        display: flex;
+        .o-house-option{
+            width: 50%;
+        }
+
+        .o-btn{
+            display: inline-block;
+            margin-top:20px;
+            width:170px;
+        }
+
+        .o-block{
+            margin-bottom:20px;
+        }
+    }
+}
+

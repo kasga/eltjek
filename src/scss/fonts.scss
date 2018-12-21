@@ -1,0 +1,101 @@
+@if $environment == 'prod' {
+    @font-face {
+      font-family: 'OrstedSansRegular';
+      src: url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansRegular16eefd8c') format('embedded-opentype'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansRegular3857963d') format('woff2'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansRegularce818dbc') format('woff'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansRegular1d51fb56')  format('truetype');
+          font-style:normal;
+          font-weight:normal;
+    }
+
+    @font-face {
+      font-family: 'OrstedSansBold';
+      src: url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansBoldaaca7588') format('embedded-opentype'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansBold25261ef4') format('woff2'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansBold0359cd6e') format('woff'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansBolddf68a806')  format('truetype');
+          font-style:normal;
+          font-weight:normal;
+    }
+
+    @font-face {
+      font-family: 'OrstedSansLight';
+      src: url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansLight75b33533') format('embedded-opentype'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansLight8931d8f3') format('woff2'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansLight40d7d1f4') format('woff'),
+          url('/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/OrstedSansLightfa00b689')  format('truetype');
+          font-style:normal;
+          font-weight:normal;
+    }
+} @else{
+    @font-face {
+      font-family: 'OrstedSansRegular';
+      src: url('./../fonts/OrstedSans-Regular.eot') format('embedded-opentype'),
+          url('./../fonts/OrstedSans-Regular.woff2') format('woff2'),
+          url('./../fonts/OrstedSans-Regular.woff') format('woff'),
+          url('./../fonts/OrstedSans-Regular.ttf')  format('truetype');
+          font-style:normal;
+          font-weight:normal;
+    }
+
+    @font-face {
+      font-family: 'OrstedSansBold';
+      src: url('./../fonts/OrstedSans-Bold.eot') format('embedded-opentype'),
+          url('./../fonts/OrstedSans-Bold.woff2') format('woff2'),
+          url('./../fonts/OrstedSans-Bold.woff') format('woff'),
+          url('./../fonts/OrstedSans-Bold.ttf')  format('truetype');
+          font-style:normal;
+          font-weight:normal;
+    }
+
+    @font-face {
+      font-family: 'OrstedSansLight';
+      src: url('./../fonts/OrstedSans-Light.eot') format('embedded-opentype'),
+          url('./../fonts/OrstedSans-Light.woff2') format('woff2'),
+          url('./../fonts/OrstedSans-Light.woff') format('woff'),
+          url('./../fonts/OrstedSans-Light.ttf')  format('truetype');
+          font-style:normal;
+          font-weight:normal;
+    }
+    
+    @font-face {
+    font-family: "dong-maine";
+     src: url('./../fonts/dong-maine.eot') format('embedded-opentype'),
+          url('./../fonts/dong-maine.woff') format('woff2'),
+          url('./../fonts/dong-maine.woff') format('woff'),
+          url('./../fonts/dong-maine.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    [data-icon]:before {
+    font-family: "dong-maine" !important;
+    content: attr(data-icon);
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+
+    [class^="icon-"]:before,
+    [class*=" icon-"]:before {
+    font-family: "dong-maine" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+
+
+

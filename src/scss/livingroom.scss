@@ -1,0 +1,22 @@
+#o-livingroom{
+    position: relative;
+    display:flex;
+    max-width:1300px;
+    margin: 0 auto;
+
+    .o-leftside-img{
+        width:350px;
+        min-height:500px;
+        background-image: url(https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/livingroom);    
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .o-rightside-content{
+        position: relative;
+        padding: 40px 70px 70px 70px;
+        width: 100%;
+        text-align:center;
+        overflow: hidden;
+    }
+}

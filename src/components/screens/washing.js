@@ -15,12 +15,25 @@ class Washing extends Component {
 
   validateFields = fields => {
     let valid = true;
-    Object.keys(fields).map((key, index) => {
-      if (fields[key] === undefined || fields[key] === "") {
-        return (valid = false);
-      }
-      return true;
-    });
+
+    if (
+      fields["washingmachine"] === undefined ||
+      fields["dryer"] === undefined
+    ) {
+      valid = false;
+    }
+
+    if (
+      fields["washingmachine"] === 1 &&
+      fields["washingmachineFrequence"] === ""
+    ) {
+      valid = false;
+    }
+
+    if (fields["dryer"] === 1 && fields["dryerFrequence"] === "") {
+      valid = false;
+    }
+
     return valid;
   };
 
@@ -94,7 +107,10 @@ class Washing extends Component {
                       .washingmachineFrequence === "" &&
                     this.state.allFields === false
                       ? " o-invalid"
-                      : "")
+                      : "") +
+                    (questionsContainer.state.washing.washingmachine === 1
+                      ? ""
+                      : " o-contracted")
                   }
                 >
                   <div className="o-question-label">
@@ -104,7 +120,7 @@ class Washing extends Component {
                     <input
                       className="o-input"
                       type="text"
-                      placeholder="Hvor ofte vasker du?"
+                      placeholder=""
                       value={
                         questionsContainer.state.washing.washingmachineFrequence
                       }
@@ -112,6 +128,80 @@ class Washing extends Component {
                         questionsContainer.updateNumber(
                           "washing",
                           "washingmachineFrequence",
+                          e.target.value
+                        );
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* QUESTION */}
+                <div
+                  className={
+                    "o-question-row" +
+                    (questionsContainer.state.washing.dryer === undefined &&
+                    this.state.allFields === false
+                      ? " o-invalid"
+                      : "")
+                  }
+                >
+                  <div className="o-question-label">
+                    Har du en tørretumbler?
+                  </div>
+                  <div className="o-radio-container">
+                    <label className="o-radio">
+                      Ja
+                      <input
+                        type="radio"
+                        name="radio2"
+                        checked={questionsContainer.state.washing.dryer === 1}
+                        onChange={() =>
+                          questionsContainer.updateRadio("washing", "dryer", 1)
+                        }
+                      />
+                      <span className="checkmark" />
+                    </label>
+                    <label className="o-radio">
+                      Nej
+                      <input
+                        type="radio"
+                        name="radio2"
+                        checked={questionsContainer.state.washing.dryer === 0}
+                        onChange={() =>
+                          questionsContainer.updateRadio("washing", "dryer", 0)
+                        }
+                      />
+                      <span className="checkmark" />
+                    </label>
+                  </div>
+                </div>
+
+                {/* QUESTION */}
+                <div
+                  className={
+                    "o-question-row" +
+                    (questionsContainer.state.washing.dryerFrequence === "" &&
+                    this.state.allFields === false
+                      ? " o-invalid"
+                      : "") +
+                    (questionsContainer.state.washing.dryer === 1
+                      ? ""
+                      : " o-contracted")
+                  }
+                >
+                  <div className="o-question-label">
+                    Hvor ofte bruger du din tørretumbler om ugen?
+                  </div>
+                  <div className="o-input-container">
+                    <input
+                      className="o-input"
+                      type="text"
+                      placeholder=""
+                      value={questionsContainer.state.washing.dryerFrequence}
+                      onChange={e => {
+                        questionsContainer.updateNumber(
+                          "washing",
+                          "dryerFrequence",
                           e.target.value
                         );
                       }}

@@ -5,15 +5,16 @@ class NavigationContainer extends Container {
     super(props);
     this.state = {
       housingType: props.housingType || "",
-      currentPage: props.housingType ? 4 : 0,
-      maxPage: props.housingType ? 4 : 0,
+      currentPage: props.housingType ? 1 : 0,
+      maxPage: props.housingType ? 1 : 0,
       pages: [
         { label: "Hjem", route: "/start" },
         { label: "Husstand", route: "/beboere" },
         { label: "Køkken", route: "/kokken" },
         { label: "Stuen & andre rum", route: "/stue" },
         { label: "Vasketøj", route: "/vasketoj" },
-        { label: "Opvarmning", route: "/opvarmning" }
+        { label: "Opvarmning", route: "/opvarmning" },
+        { label: "Dit resultat", route: "/resultat" }
       ]
     };
   }

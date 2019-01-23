@@ -69,11 +69,10 @@ class Kitchen extends Component {
                       <option value="Vælg" disabled hidden>
                         Vælg
                       </option>
-                      <option value="0">Keramisk komfur</option>
-                      <option value="1">Induktion</option>
-                      <option value="2">Gaskomfur</option>
-                      <option value="3">Gaskomfur med elovn</option>
-                      <option value="4">Andet</option>
+                      <option value="ceramic">Keramisk komfur</option>
+                      <option value="induction">Induktion</option>
+                      <option value="gasWithElOven">Gaskomfur med elovn</option>
+                      <option value="ordernaryStove">Alm. komfur</option>
                     </select>
                   </div>
                 </div>
@@ -110,10 +109,11 @@ class Kitchen extends Component {
                       <option value="Vælg" disabled hidden>
                         Vælg
                       </option>
-                      <option value="0">Køleskab og fryser hver for sig</option>
-                      <option value="1">Kølefryseskab</option>
-                      <option value="2">Har kun køleskab</option>
-                      <option value="3">Andet</option>
+                      <option value="seperated">
+                        Køleskab og fryser hver for sig
+                      </option>
+                      <option value="combined">Kølefryseskab</option>
+                      <option value="onlyFridge">Har kun køleskab</option>
                     </select>
                   </div>
                 </div>

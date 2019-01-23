@@ -108,13 +108,13 @@ class Livingroom extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange stationære computere har du?
+                    Hvor mange timer om dagen bruger du din computer?
                   </div>
                   <div className="o-input-container">
                     <input
                       className="o-input"
                       type="text"
-                      placeholder="Antal computere"
+                      placeholder="Antal timer"
                       value={questionsContainer.state.livingroom.computers}
                       onChange={e => {
                         questionsContainer.updateNumber(
@@ -138,13 +138,13 @@ class Livingroom extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange spillekonsoller har du?
+                    Har du en spillekonsol?
                   </div>
                   <div className="o-input-container">
                     <input
                       className="o-input"
                       type="text"
-                      placeholder="Antal spillekonsoller"
+                      placeholder="Hvor mange timer om dagen spiller du?"
                       value={questionsContainer.state.livingroom.consols}
                       onChange={e => {
                         questionsContainer.updateNumber(
@@ -174,7 +174,7 @@ class Livingroom extends Component {
                     <input
                       className="o-input"
                       type="text"
-                      placeholder="Antal spillekonsoller"
+                      placeholder="Antal lamper"
                       value={questionsContainer.state.livingroom.lamps}
                       onChange={e => {
                         questionsContainer.updateNumber(

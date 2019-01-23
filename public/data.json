@@ -1,0 +1,78 @@
+{
+    "kwh":{
+        "kitchen":{
+            "stove": {
+                "ceramic": 250,
+                "induction": 215,
+                "gasWithElOven": 95,
+                "ordernaryStove":156
+            },
+            "fridge": {
+                "seperated": 418,
+                "combined": 335,
+                "onlyFridge": 185
+            },
+            "dishwasher": 1.6,
+            "dishwasherAverage":220
+        },
+        
+        "livingroom":{
+            "tv": 245,
+            "tvBoxes": 217,
+            "computers": 37.5,
+            "computersAverage": 140,
+            "consols": 36.5,
+            "consolsAverage": 125,
+            "lamps": 7,
+            "lampsAverage": 259
+        },
+
+        "washing": {
+            "washingmachineFrequence": 0.85,
+            "washingmachineAverage": 213,
+            "dryerFrequence": 2.5,
+            "dryerAverage": 440
+        },
+
+        "heating": {
+            "floorSize": 120,
+            "electricUsageFrequence": 80
+        },
+
+        "extras":{
+            "house":{
+                "child":350,
+                "tennager":550
+            },
+            "appartment":{
+                "child": 200,
+                "tennager": 450
+            },
+            "athome":1000
+        },
+
+        "guiding":{
+            "appartment":[1610, 2100, 2577, 3046, 3520],
+            "house": [
+                2954,
+                3752,
+                4520,
+                5181,
+                5695
+            ] 
+        }
+    },
+
+    "result":{
+        "tips":{
+            "stove":"Et godt råd er altid at huske låg på gryden, når du koger noget. Uden låg bruger du tre gange så meget el. Og brug aldrig mere vand, end nødvendigt. Skal du bruge ovnen, husk at udnyt eftervarmen ved at slukke for ovnen lidt tidligere. ",
+            "tv":"Vidste du, at et plasma-tv bruger over dobbelt så meget strøm som et LED-tv. Så husk at tjekke energimærket, næste gang du køber et fjernsyn. Og så har størrelsen også noget at sige. Jo større skærm, des højere strømforbrug. ",
+            "dishwasher":"Det ser ud til, at din opvaskemaskine kører derud af. Du kan spare, hvis du husker at fylde opvaskemaskinen helt op og ikke vasker på den højeste temperatur. Bruger du i stedet et program ved 50/55 °C, bruger du 10-20 % mindre strøm end opvask ved 65 °C. Og et ekstra plus er, at en lavere temperatur er mere skånsom ved glas og porcelæn.",
+            "computers":"Det ser ud til, at du bruger mere strøm på stationære computere end gennemsnittet. Vil du spare lidt, så sæt dine computere til automatisk at gå i dvale, når du ikke lige bruger dem. Og overvej også, om du skal vælge en bærbar computer næste gang – den bruger kun 1/3 af strømmen. ",
+            "consols":"Bliver der spillet mange timer hos dig? En spillekonsol kan være en lille tyv på elregningen. Den kan bruge strøm for op mod 2.800 kr. om året, hvis den står tændt hele tiden. Derfor er de gode råd til dig: Undgå at din konsol står på standby – sluk på kontakten. Og kan du spille en time mindre om dagen, sparer du 100 kr. om året på elregningen. ",
+            "lamps":"Selv om belysning ikke er den store strømsluger i de fleste hjem, så har du lidt flere lamper end gennemsnittet. Så husk at slukke lyset efter dig – dagslys er jo helt gratis. Og har du endnu ikke udskiftet halogonspots og glødepærer med LED, så er det bare om at komme i gang. Sammenlignet med glødepærer bruger LED-pærer 25 % mindre strøm og holder 10-15 gange længere. ",
+            "washingmachine":"Din vaskemaskine har vist fuldtidsarbejde, og det kan godt koste lidt ekstra på din elregning. Men der er heldigvis et par ting, du kan gøre for at spare lidt. Drop kogevasken, og vask i stedet på 60 °C. Det er nok til at få tøjet rent. Til kulørt tøj er 40 °C helt fint. Og det gode gamle råd gælder stadig: Fyld vaskemaskinen helt op, hver gang du vasker. ",
+            "dryer":"Din tørretumbler kører oftere end gennemsnittet, og det kan sikkert mærkes på din elregning. Et godt råd er at  hænge tøjet ud, hvis vejret er til det. Så tørrer du tøjet grønt og sparer penge. Skal du bruge tørretumbleren, så fyld den op, men undgå at proppe den. For meget tøj forlænger tørretiden og øger elforbruget – og dit tøj bliver mere krøllet. Og husk lige fnugfilteret. Rens det hver gang tørretumbleren har været i gang, for ellers tager det længere tid for dit tøj at tørre. "
+        }
+    }
+}

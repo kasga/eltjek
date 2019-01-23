@@ -5,18 +5,28 @@ import Residents from "./components/screens/residents";
 import Kitchen from "./components/screens/kitchen";
 import Livingroom from "./components/screens/livingroom";
 import Washing from "./components/screens/washing";
+import Heating from "./components/screens/heating";
 import Result from "./components/screens/result";
 import queryString from "query-string";
+
 import _ from "underscore";
 import "./scss/index.scss";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: ""
+    };
+  }
+
   skipFirstPage = () => {
     const query = queryString.parse(window.location.search);
     if (!_.isEmpty(query)) {
       return <Redirect to={query.type} />;
     }
   };
+
   render() {
     return (
       <div id="o-eltjek">
@@ -28,7 +38,8 @@ class App extends Component {
               <Route exact path="/kokken" component={Kitchen} />
               <Route exact path="/stue" component={Livingroom} />
               <Route exact path="/vasketoj" component={Washing} />
-              <Route exact path="/result" component={Result} />
+              <Route exact path="/opvarmning" component={Heating} />
+              <Route exact path="/resultat" component={Result} />
               {this.skipFirstPage()}
             </Switch>
             <Route exact path="/" component={Home} />

@@ -1,0 +1,59 @@
+{
+    "kwh":{
+        "kitchen":{
+            "stove": {
+                "ceramic": 20,
+                "induction": 30,
+                "gas": 40,
+                "gasWithElOven": 50,
+                "other":60
+            },
+            "fridge": {
+                "seperated": 10,
+                "combined": 20,
+                "onlyFridge": 30,
+                "other": 40
+            },
+            "dishwasher": 10,
+            "dishwasherAverage": 220
+        },
+        
+        "livingroom":{
+            "tv": 10,
+            "tvBoxes": 20,
+            "computers": 30,
+            "consols": 40,
+            "lamps": 50
+        },
+
+        "washing": {
+            "washingmachineFrequence": 10,
+            "dryerFrequence": 20,
+        },
+
+        "heating": {
+            "floorSize": 10,
+            "floorUsageFrequence": 20,
+            "electricUsageFrequence": 30
+        },
+
+        "extras":{
+            "house":{
+                "child":350,
+                "tennager":550
+            },
+            "appartment":{
+                "child": 200,
+                "tennager": 450
+            },
+            "athome":1000
+        }
+    },
+
+    "result":{
+        "conclussion":[
+            "Sammenlignet med andre hustande, som ligner dig, bruger du generel mere el. Dit forbrug er særligt højt i køkkenet og stuen.",
+            "Sammenlignet med andre hustande, som ligner dig, bruger du generel mindre el."
+        ]
+    }
+}

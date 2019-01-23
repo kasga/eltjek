@@ -21,6 +21,7 @@ html {
 .o-content-container{
     text-align: left;
     margin-top:80px;
+    line-height: 1.5;
 }
 
 .o-bg-shadow{
@@ -136,6 +137,16 @@ html {
 
          &:hover{
             background-color:darken( $blue, 10% )
+        }
+    }
+
+    &.o-red{
+        color:$white;
+        background-color: $red;
+        transition: all 200ms ease-out;
+
+         &:hover{
+            background-color:darken( $red, 10% )
         }
     }
 
@@ -358,4 +369,28 @@ select:-moz-focusring {
 
 .o-block{
     display: block;
+}
+
+.o-center{
+    text-align: center;
+}
+
+.o-bold{
+    font-family: $font-bold;
+}
+
+.o-regular{
+    font-family: $font-regular;
+}
+
+.o-show{
+    display:block;
+}
+
+.o-hide{
+    display:none;
+}
+
+.o-w100{
+    width:100%
 }

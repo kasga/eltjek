@@ -34,11 +34,23 @@
                     z-index:5;
                     cursor:pointer;
 
+                    .o-checkmark{
+                        padding-top:2px; 
+                        path{
+                            fill:$black;
+                        }
+                    }
+
                     &.visited{
                         background-color:$sand;
                         color:$white;
+
+                        .o-checkmark path{
+                            fill:$white;
+                        }
                     }
                 }
+
 
                 .o-process-circle-label{
                     font-size: 14px;
@@ -57,6 +69,15 @@
 
                 .o-process-circle-label.show{
                     opacity: 1;
+                }
+            }
+
+            .o-process-circle-container:last-child .o-process-circle{
+                
+                &.visited{
+                    background-color:$green;
+                    border: 1px solid $green;
+                    color:$white;
                 }
             }
             

@@ -3,6 +3,7 @@ import ProcessBar from "./../common/processbar";
 import { Subscribe } from "unstated";
 import QuestionsContainer from "../../unstated/questionsContainer";
 import NavigationContainer from "../../unstated/navigationContainer";
+import { isMobileOnly } from "react-device-detect";
 
 class Residents extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class Residents extends Component {
       <Subscribe to={[QuestionsContainer, NavigationContainer]}>
         {(questionsContainer, navigationContainer) => (
           <div id="o-residents" className="o-bg-shadow">
+            {questionsContainer.resetCalculator()}
             <div className="o-leftside-img" />
             <div className="o-rightside-content">
               <ProcessBar currentPage="residents" />
@@ -189,7 +191,9 @@ class Residents extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Er der nogen voksne hjemmegående i din husstand <br />
+                    Er der nogen voksne hjemmegående i din husstand? Hvis ja,
+                    hvor mange?
+                    <br />
                     <span className="o-question-label-info">
                       (pensionist, på barsel eller lignende)?
                     </span>
@@ -241,7 +245,7 @@ class Residents extends Component {
                   <div className="o-question-label">
                     Hvor stor er din bolig? <br />
                     <span className="o-question-label-info">
-                      (Eventuelle kælderrum skal medtages.)
+                      (Eventuelle kælderrum skal medtages)
                     </span>
                   </div>
                   <div className="o-input-container">
@@ -287,7 +291,7 @@ class Residents extends Component {
                       }
                     }}
                   >
-                    Fortsæt
+                    {isMobileOnly ? "Fortsæt" : "Videre til køkkenet"}
                   </div>
                 </div>
 

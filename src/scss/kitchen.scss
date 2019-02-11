@@ -7,7 +7,7 @@
     .o-leftside-img{
         width:350px;
         min-height:500px;
-        background-image: url(https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/kitchen);    
+        background-image: url(https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/kitchenImg);    
         background-size: cover;
         background-position: center center;
     }
@@ -19,4 +19,64 @@
         text-align:center;
         overflow: hidden;
     }
+}
+
+
+
+
+
+
+/* TABLET PORTRAIT */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  #o-kitchen{
+    .o-leftside-img{
+        display: none;
+    }
+    .o-question-label{
+        padding-right:40px;
+    }
+  }
+}
+
+/* TABLET LANDSCAPE */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  #o-kitchen{
+    .o-leftside-img{
+        display: none;
+    }
+  }
+}
+
+/* PHONE LANDSCAPE */
+@media only screen and (max-device-width: 767px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  
+#o-kitchen{
+    .o-headline2.o-mb20{
+        margin-bottom:0;
+    }
+    .o-leftside-img{
+        display: none;
+    }
+
+    .o-rightside-content{
+        padding: 40px 20px 60px 20px;
+    }
+  }
+}
+
+/* PHONE PORTRAIT */
+@media only screen and (max-device-width: 767px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  
+  #o-kitchen{
+    .o-headline2.o-mb20{
+        margin-bottom:0;
+    }
+    .o-leftside-img{
+        display: none;
+    }
+
+    .o-rightside-content{
+        padding: 40px 20px 60px 20px;
+    }
+  }
 }

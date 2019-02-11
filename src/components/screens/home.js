@@ -10,6 +10,7 @@ class Home extends Component {
       <Subscribe to={[QuestionsContainer, NavigationContainer]}>
         {(questionsContainer, navigationContainer) => (
           <div id="o-home" className="o-bg-shadow">
+            {questionsContainer.resetCalculator()}
             <div className="o-eltjek">
               <div className="o-eltjek-circle">
                 <img

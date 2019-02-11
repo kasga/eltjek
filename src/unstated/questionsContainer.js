@@ -1,107 +1,45 @@
 import { Container } from "unstated";
+import fetch from "isomorphic-fetch";
 
 class QuestionsContainer extends Container {
   constructor(props = {}) {
     super(props);
 
-    this.state = {
-      housing: props.housingType || "",
-      residents: {
-        adults: undefined,
-        teenagers: undefined,
-        children: undefined,
-        stayAtHome: undefined,
-        residentalSize: ""
-      },
-      kitchen: {
-        stove: "",
-        fridge: "",
-        dishwasher: undefined,
-        dishwasherFrequence: ""
-      },
-      livingroom: {
-        tv: "",
-        tvBoxes: "",
-        computers: "",
-        consols: "",
-        lamps: ""
-      },
-      washing: {
-        washingmachine: undefined,
-        washingmachineFrequence: "",
-        dryer: undefined,
-        dryerFrequence: ""
-      },
-      heating: {
-        floor: undefined,
-        floorSize: "",
-        floorUsageFrequence: "",
-        electric: undefined,
-        electricUsageFrequence: ""
-      },
-      caclulatedUsage: {
-        totalUsage: undefined,
-        kitchen: {
-          stove: undefined,
-          fridge: undefined,
-          dishwasher: undefined,
-          dishwasherAverage: undefined
-        },
-        livingroom: {
-          tv: undefined,
-          tvBoxes: undefined,
-          computers: undefined,
-          computersAverage: undefined,
-          consols: undefined,
-          consolsAverage: undefined,
-          lamps: undefined
-        },
-        washing: {
-          washingmachine: undefined,
-          washingmachineAverage: undefined,
-          dryer: undefined,
-          dryerAverage: undefined
-        },
-        heating: { floor: undefined, electric: undefined }
-      },
-      result: { usage: "over", tips: [] },
-      data: { kwh: {}, guiding: {}, tips: {} }
-    };
-
     // this.state = {
-    //   housing: "hus",
+    //   housing: props.housingType || "",
     //   residents: {
-    //     adults: 2,
-    //     teenagers: 2,
-    //     children: 1,
-    //     stayAtHome: 1,
-    //     residentalSize: "123"
+    //     adults: undefined,
+    //     teenagers: undefined,
+    //     children: undefined,
+    //     stayAtHome: undefined,
+    //     residentalSize: ""
     //   },
     //   kitchen: {
-    //     stove: "ceramic",
-    //     fridge: "combined",
-    //     dishwasher: 1,
-    //     dishwasherFrequence: "1"
+    //     stove: undefined,
+    //     fridge: undefined,
+    //     dishwasher: undefined,
+    //     dishwasherFrequence: ""
     //   },
     //   livingroom: {
-    //     tv: "3",
-    //     tvBoxes: "2",
-    //     computers: "6",
-    //     consols: "2",
-    //     lamps: "30"
+    //     tv: undefined,
+    //     tvBoxes: undefined,
+    //     computers: undefined,
+    //     consols: "",
+    //     consolsFrequence: "",
+    //     lamps: ""
     //   },
     //   washing: {
-    //     washingmachine: 1,
-    //     washingmachineFrequence: "14",
-    //     dryer: 1,
-    //     dryerFrequence: "14"
+    //     washingmachine: undefined,
+    //     washingmachineFrequence: "",
+    //     dryer: undefined,
+    //     dryerFrequence: ""
     //   },
     //   heating: {
-    //     floor: 1,
-    //     floorSize: "128",
-    //     floorUsageFrequence: "7",
-    //     electric: 1,
-    //     electricUsageFrequence: "3"
+    //     floor: undefined,
+    //     floorSize: "",
+    //     floorUsageFrequence: "",
+    //     electric: undefined,
+    //     electricUsageFrequence: ""
     //   },
     //   caclulatedUsage: {
     //     totalUsage: undefined,
@@ -128,15 +66,97 @@ class QuestionsContainer extends Container {
     //     },
     //     heating: { floor: undefined, electric: undefined }
     //   },
-    //   result: { usage: "", tips: [] },
-    //   data: { kwh: {}, guiding: {}, tips: {} }
+    //   result: { usage: "", tips: [], maxUsage: undefined, extras: 0 },
+    //   data: { kwh: {}, guiding: {}, tipsBad: {}, tipsGood: {} },
+    //   calculate: true
     // };
+
+    this.state = {
+      housing: "hus",
+      residents: {
+        adults: 2,
+        teenagers: 2,
+        children: 2,
+        stayAtHome: 1,
+        residentalSize: "240"
+      },
+      kitchen: {
+        stove: "induction",
+        fridge: "combined",
+        dishwasher: 1,
+        dishwasherFrequence: "10"
+      },
+      livingroom: {
+        tv: "2",
+        tvBoxes: "0",
+        computers: "3",
+        consols: 0,
+        consolsFrequence: "0",
+        lamps: "40"
+      },
+      washing: {
+        washingmachine: 1,
+        washingmachineFrequence: "14",
+        dryer: 1,
+        dryerFrequence: "14"
+      },
+      heating: {
+        floor: 1,
+        floorSize: "80",
+        floorUsageFrequence: "67",
+        electric: 0,
+        electricUsageFrequence: "3"
+      },
+      caclulatedUsage: {
+        totalUsage: undefined,
+        kitchen: {
+          stove: undefined,
+          fridge: undefined,
+          dishwasher: undefined,
+          dishwasherAverage: undefined
+        },
+        livingroom: {
+          tv: undefined,
+          tvBoxes: undefined,
+          computers: undefined,
+          computersAverage: undefined,
+          consols: undefined,
+          consolsAverage: undefined,
+          lamps: undefined
+        },
+        washing: {
+          washingmachine: undefined,
+          washingmachineAverage: undefined,
+          dryer: undefined,
+          dryerAverage: undefined
+        },
+        heating: {
+          floor: undefined,
+          electric: undefined
+        }
+      },
+      result: {
+        usage: "",
+        tips: [],
+        maxUsage: 0,
+        extras: 0
+      },
+      data: {
+        kwh: {},
+        guiding: {},
+        tipsBad: {},
+        tipsGood: {}
+      },
+      calculate: true
+    };
 
     this.fetchData();
   }
 
   // CALCULATE KWH VALUES IS CALLED FROM THE RESULT PAGE
   calculateKwhValues() {
+    this.setState({ calculate: false });
+
     const data = this.state.data.kwh;
     const residents = this.state.residents;
     const guiding = this.state.data.guiding;
@@ -144,15 +164,19 @@ class QuestionsContainer extends Container {
     const livingroom = this.state.livingroom;
     const washing = this.state.washing;
     const heating = this.state.heating;
-    const tips = this.state.data.tips;
+    const tipsBad = this.state.data.tipsBad;
+    const tipsGood = this.state.data.tipsGood;
     const tipsArr = [];
 
     // Kitchen
     let stove = data.kitchen.stove[kitchen.stove];
     let fridge = data.kitchen.fridge[kitchen.fridge];
-    let dishwasher = Math.round(
-      data.kitchen.dishwasher * parseInt(kitchen.dishwasherFrequence) * 52
-    );
+    let dishwasher =
+      kitchen.dishwasher === 1
+        ? Math.round(
+            data.kitchen.dishwasher * parseInt(kitchen.dishwasherFrequence) * 52
+          )
+        : 0;
     let dishwasherAverage = data.kitchen.dishwasherAverage;
     tipsArr.push({
       type: "dishwasher",
@@ -175,9 +199,12 @@ class QuestionsContainer extends Container {
       img: "imgLivingroom"
     });
 
-    let consols = Math.round(
-      data.livingroom.consols * parseInt(livingroom.consols)
-    );
+    let consols =
+      livingroom.consols === 1
+        ? Math.round(
+            data.livingroom.consols * parseInt(livingroom.consolsFrequence)
+          )
+        : 0;
     let consolsAverage = data.livingroom.consolsAverage;
     tipsArr.push({
       type: "consols",
@@ -194,11 +221,15 @@ class QuestionsContainer extends Container {
     });
 
     //Washing
-    let washingmachine = Math.round(
-      (data.washing.washingmachineFrequence / 7) *
-        parseInt(washing.washingmachineFrequence) *
-        365
-    );
+    let washingmachine =
+      washing.washingmachine === 1
+        ? Math.round(
+            (data.washing.washingmachineFrequence / 7) *
+              parseInt(washing.washingmachineFrequence) *
+              365
+          )
+        : 0;
+
     let washingmachineAverage = data.washing.washingmachineAverage;
     tipsArr.push({
       type: "washingmachine",
@@ -206,9 +237,15 @@ class QuestionsContainer extends Container {
       img: "imgWashing"
     });
 
-    let dryer = Math.round(
-      (data.washing.dryerFrequence / 7) * parseInt(washing.dryerFrequence) * 365
-    );
+    let dryer =
+      washing.dryer === 1
+        ? Math.round(
+            (data.washing.dryerFrequence / 7) *
+              parseInt(washing.dryerFrequence) *
+              365
+          )
+        : 0;
+
     let dryerAverage = data.washing.dryerAverage;
     tipsArr.push({
       type: "dryer",
@@ -217,12 +254,20 @@ class QuestionsContainer extends Container {
     });
 
     //Heating
-    let floor = Math.round(
-      (data.heating.floorSize * parseInt(heating.floorSize)) / 12
-    );
-    let electric = Math.round(
-      (data.heating.electricUsageFrequence * parseInt(heating.floorSize)) / 6
-    );
+    let floor =
+      heating.floor === 1
+        ? Math.round(
+            (data.heating.floorSize * parseInt(heating.floorSize)) / 12
+          )
+        : 0;
+    let electric =
+      heating.electric === 1
+        ? Math.round(
+            (data.heating.electricUsageFrequence *
+              parseInt(heating.floorSize)) /
+              6
+          )
+        : 0;
 
     // TOTAL USAGE CALCULATION
     let atHome = residents.stayAtHome * data.extras.athome;
@@ -239,7 +284,23 @@ class QuestionsContainer extends Container {
     floor = this.evalNum(floor);
     electric = this.evalNum(electric);
 
+    //If there are more than 4 people in the houshold, add extra kwh per teenager
+    let xtraKwh = 0;
+    let numOfPeople =
+      parseInt(residents.adults) +
+      parseInt(residents.teenagers) +
+      parseInt(residents.children);
+    if (numOfPeople > 4) {
+      let moreThan4 = numOfPeople - 4;
+      if (this.state.housing === "hus") {
+        xtraKwh = moreThan4 * parseInt(data.extras.house.teenager);
+      } else {
+        xtraKwh = moreThan4 * parseInt(data.extras.appartment.teenager);
+      }
+    }
+
     let totalUsage =
+      xtraKwh +
       atHome +
       stove +
       fridge +
@@ -253,11 +314,37 @@ class QuestionsContainer extends Container {
       floor +
       electric;
 
+    // Evaluate the largest usage kwh among the calculations
+    let maxUsage = Math.max(
+      stove,
+      fridge,
+      dishwasher,
+      tv,
+      tvBoxes,
+      computers,
+      lamps,
+      washingmachine,
+      dryer,
+      floor,
+      electric,
+      dishwasherAverage,
+      computersAverage,
+      consolsAverage,
+      lampsAverage,
+      washingmachineAverage,
+      dryerAverage
+    );
+
     // Evaluate usage, is it higher og lower than out recommendation
     let evaluatedUsage = this.handleUsageResult(totalUsage, guiding, residents);
 
     // Evaluate which tips to display
-    let evaluateTips = this.handleTips(tipsArr, tips);
+    let evaluateTips = this.handleTips(
+      tipsArr,
+      tipsBad,
+      tipsGood,
+      evaluatedUsage
+    );
 
     // Update the state with the calculated values
     this.setState(
@@ -299,7 +386,9 @@ class QuestionsContainer extends Container {
         result: {
           ...prevState.result,
           usage: evaluatedUsage,
-          tips: evaluateTips
+          maxUsage: maxUsage,
+          tips: evaluateTips,
+          extras: xtraKwh
         }
       }),
       () => {
@@ -314,42 +403,91 @@ class QuestionsContainer extends Container {
     else return num;
   }
 
-  handleTips(tipsArr, tips) {
+  handleTips(tipsArr, tipsBad, tipsGood, usage) {
     let yourTips = [];
-    // Sort the TipsArr array e.g. {"tv", 1134} by the difference value to descent
-    tipsArr.sort(function(a, b) {
-      return b.diff - a.diff;
-    });
-    //Then remove the negative values (this means, that he/she uses less energy)
-    tipsArr = tipsArr.filter(function(x) {
-      return x.diff > -1;
-    });
 
-    // Trim the array to three items
-    tipsArr = tipsArr.splice(0, 3);
+    if (usage === "over") {
+      let tips = tipsBad;
+      // Sort the TipsArr array e.g. {"tv", 1134} by the difference value to descent
+      tipsArr.sort(function(a, b) {
+        return b.diff - a.diff;
+      });
 
-    //Map tipsArr to the tips in the data file
-    tipsArr.forEach(value => {
-      yourTips.push({ tip: tips[value.type], img: value.img });
-    });
+      //Then remove the negative values (this means, that he/she uses less energy)
+      tipsArr = tipsArr.filter(function(x) {
+        return x.diff > -1;
+      });
 
-    //If there is less than 3 tips, fill up with "stove" and "tv" tips
-    if (yourTips.length === 2)
-      yourTips.push({ tip: tips["stove"], img: "imgKitchen" });
-    else if (yourTips.length === 1)
-      yourTips.push(
+      // Trim the array to three items
+      tipsArr = tipsArr.slice(0, 3);
+
+      //Map tipsArr to the tips in the data file
+      tipsArr.forEach(value => {
+        yourTips.push({ tip: tips[value.type], img: value.img });
+      });
+
+      //If there is less than 3 tips, fill up with "stove" and "tv" tips
+      const xtraTips = [
         { tip: tips["stove"], img: "imgKitchen" },
-        { tip: tips["tv"], img: "imgLivingroom" }
-      );
+        { tip: tips["fridge"], img: "imgKitchen" },
+        { tip: tips["tv"], img: "imgLivingroom" },
+        { tip: tips["tvBoxes"], img: "imgLivingroom" },
+        { tip: tips["floor"], img: "imgFloor" }
+      ];
+      if (yourTips.length === 2) {
+        yourTips.push(xtraTips[Math.floor(Math.random() * xtraTips.length)]);
+      } else if (yourTips.length === 1) {
+        //Find first tip index,then find it in the array and then remove it,so that it is not reused
+        const firstTipIndex = Math.floor(Math.random() * xtraTips.length);
+        const firstTip = xtraTips[firstTipIndex];
+        xtraTips.splice(firstTipIndex, 1);
 
-    return yourTips;
+        // Find second tip
+        const secondTip = xtraTips[Math.floor(Math.random() * xtraTips.length)];
+        yourTips.push(firstTip, secondTip);
+      }
+      return yourTips;
+    } else {
+      let tips = tipsGood;
+      const GoodTips = [
+        { tip: tips["stove"], img: "imgKitchen" },
+        { tip: tips["dishwasher"], img: "imgKitchen" },
+        { tip: tips["tv"], img: "imgLivingroom" },
+        { tip: tips["consols"], img: "imgLivingroom" },
+        { tip: tips["lamps"], img: "imgLivingroom" },
+        { tip: tips["washingmachine"], img: "imgWashing" },
+        { tip: tips["dryer"], img: "imgWashing" }
+      ];
+
+      //Remove irelevant tips, e.g. the user hasn't got a dishwasher
+      if (this.state.livingroom.consols !== 1) GoodTips.splice(3, 1);
+      if (this.state.washing.dryer !== 1) GoodTips.splice(6, 1);
+      if (this.state.washing.washingmachine !== 1) GoodTips.splice(5, 1);
+      if (this.state.kitchen.dishwasher !== 1) GoodTips.splice(1, 1);
+
+      const firstTipIndex = Math.floor(Math.random() * GoodTips.length);
+      const firstTip = GoodTips[firstTipIndex];
+      GoodTips.splice(firstTipIndex, 1);
+
+      const secondTipIndex = Math.floor(Math.random() * GoodTips.length);
+      const secondTip = GoodTips[secondTipIndex];
+      GoodTips.splice(secondTipIndex, 1);
+
+      // Find second tip
+      const thirdTip = GoodTips[Math.floor(Math.random() * GoodTips.length)];
+      yourTips.push(firstTip, secondTip, thirdTip);
+
+      return yourTips;
+    }
   }
 
   handleUsageResult(usage, guiding, residents) {
     let guide;
     let usageState;
     let numOfPeople =
-      residents.adults + residents.teenagers + residents.children;
+      parseInt(residents.adults) +
+      parseInt(residents.teenagers) +
+      parseInt(residents.children);
 
     if (this.state.housing === "hus") {
       if (numOfPeople < 5) {
@@ -400,7 +538,15 @@ class QuestionsContainer extends Container {
   // FETCHING & HANDELING DATA
 
   fetchData() {
-    fetch("/data.json")
+    //https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/data
+    //data.json
+    fetch("data.json", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
       .then(response => response.json())
       .then(parsedJSON => this.handleData(parsedJSON))
       .catch(error =>
@@ -411,20 +557,24 @@ class QuestionsContainer extends Container {
   }
 
   handleData(res) {
-    console.log(res);
     this.setState(
       {
         data: {
           ...this.state.data,
           kwh: res.kwh,
           guiding: res.kwh.guiding,
-          tips: res.result.tips
+          tipsBad: res.result.tipsBad,
+          tipsGood: res.result.tipsGood
         }
       },
       () => {
-        //this.calculateKwhValues();
+        this.calculateKwhValues();
       }
     );
+  }
+
+  resetCalculator() {
+    if (!this.state.calculate) this.setState({ calculate: true });
   }
 }
 

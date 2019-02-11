@@ -3,6 +3,7 @@ import ProcessBar from "./../common/processbar";
 import { Subscribe } from "unstated";
 import QuestionsContainer from "../../unstated/questionsContainer";
 import NavigationContainer from "../../unstated/navigationContainer";
+import { isMobileOnly } from "react-device-detect";
 
 class Heating extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class Heating extends Component {
       <Subscribe to={[QuestionsContainer, NavigationContainer]}>
         {(questionsContainer, navigationContainer) => (
           <div id="o-heating" className="o-bg-shadow">
+            {questionsContainer.resetCalculator()}
             <div className="o-leftside-img" />
             <div className="o-rightside-content">
               <ProcessBar currentPage="heating" />
@@ -260,7 +262,7 @@ class Heating extends Component {
                       }
                     }}
                   >
-                    Fortsæt
+                    {isMobileOnly ? "Fortsæt" : "Så er dit resultat klar"}
                   </div>
                 </div>
 

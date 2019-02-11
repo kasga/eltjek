@@ -4,6 +4,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "unstated";
 import NavigationContainer from "./unstated/navigationContainer";
+import QuestionsContainer from "./unstated/questionsContainer";
 import "babel-polyfill";
 import queryString from "query-string";
 
@@ -16,8 +17,10 @@ let navigationContainer = new NavigationContainer({
   housingType: type
 });
 
+let questionsContainer = new QuestionsContainer();
+
 ReactDOM.render(
-  <Provider inject={[navigationContainer]}>
+  <Provider inject={[navigationContainer, questionsContainer]}>
     <App />
   </Provider>,
   document.getElementById("root")

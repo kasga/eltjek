@@ -31,6 +31,11 @@
         }
     }
     .o-house-options{
+
+         img{
+            height: 115px;
+        }
+
         margin-top:50px;
         display: flex;
         .o-house-option{
@@ -39,7 +44,6 @@
 
         .o-btn{
             display: inline-block;
-            margin-top:20px;
             width:170px;
         }
 
@@ -48,4 +52,55 @@
         }
     }
 }
+
+
+
+/* TABLET PORTRAIT */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  
+}
+
+/* TABLET LANDSCAPE */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  
+}
+
+/* PHONE LANDSCAPE */
+@media only screen and (max-device-width: 767px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+  #o-home{
+        max-width:100%;
+        padding:100px 20px 70px 20px;
+        
+        .o-house-options{
+             img{
+                 height: 105px;
+             }
+            .o-btn{
+                width:150px;
+                padding: 14px 10px;
+            }
+        }
+    }
+
+}
+
+/* PHONE PORTRAIT */
+@media only screen and (max-device-width: 767px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  
+  #o-home{
+        max-width:100%;
+        padding:130px 20px 70px 20px;
+        
+        .o-house-options{
+             img{
+                 height: 105px;
+             }
+            .o-btn{
+                width:150px;
+                padding: 14px 10px;
+            }
+        }
+    }
+}
+
 

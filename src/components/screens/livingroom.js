@@ -3,6 +3,7 @@ import ProcessBar from "./../common/processbar";
 import { Subscribe } from "unstated";
 import QuestionsContainer from "../../unstated/questionsContainer";
 import NavigationContainer from "../../unstated/navigationContainer";
+import { isMobileOnly } from "react-device-detect";
 
 class Livingroom extends Component {
   constructor(props) {
@@ -13,13 +14,27 @@ class Livingroom extends Component {
     };
   }
 
+  // validateFields = fields => {
+  //   let valid = true;
+  //   Object.keys(fields).map((key, index) => {
+  //     if (fields[key] === undefined || fields[key] === "") {
+  //       return (valid = false);
+  //     }
+  //     return true;
+  //   });
+  //   return valid;
+  // };
+
   validateFields = fields => {
     let valid = true;
     Object.keys(fields).map((key, index) => {
-      if (fields[key] === undefined || fields[key] === "") {
+      if (
+        (fields[key] === undefined && fields["consols"] !== 0) ||
+        (fields[key] === "" && fields["consols"] !== 0)
+      ) {
         return (valid = false);
       }
-      return true;
+      return (valid = true);
     });
     return valid;
   };
@@ -29,6 +44,7 @@ class Livingroom extends Component {
       <Subscribe to={[QuestionsContainer, NavigationContainer]}>
         {(questionsContainer, navigationContainer) => (
           <div id="o-livingroom" className="o-bg-shadow">
+            {questionsContainer.resetCalculator()}
             <div className="o-leftside-img" />
             <div className="o-rightside-content">
               <ProcessBar currentPage="livingroom" />
@@ -37,7 +53,7 @@ class Livingroom extends Component {
                 <div
                   className={
                     "o-question-row" +
-                    (questionsContainer.state.livingroom.tv === "" &&
+                    (questionsContainer.state.livingroom.tv === undefined &&
                     this.state.allFields === false
                       ? " o-invalid"
                       : "")
@@ -46,20 +62,37 @@ class Livingroom extends Component {
                   <div className="o-question-label">
                     Hvor mange fjernsyn har du?
                   </div>
-                  <div className="o-input-container">
-                    <input
-                      className="o-input"
-                      type="text"
-                      placeholder="Antal fjernsyn"
-                      value={questionsContainer.state.livingroom.tv}
+                  <div className="o-select-container">
+                    <select
+                      className="o-select"
+                      value={
+                        questionsContainer.state.livingroom.tv
+                          ? questionsContainer.state.livingroom.tv
+                          : "Vælg"
+                      }
                       onChange={e => {
-                        questionsContainer.updateNumber(
+                        questionsContainer.updateSelecMenu(
                           "livingroom",
                           "tv",
                           e.target.value
                         );
                       }}
-                    />
+                    >
+                      <option value="Vælg" disabled hidden>
+                        Vælg
+                      </option>
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
                   </div>
                 </div>
 
@@ -67,33 +100,46 @@ class Livingroom extends Component {
                 <div
                   className={
                     "o-question-row" +
-                    (questionsContainer.state.livingroom.tvBoxes === "" &&
-                    this.state.allFields === false
+                    (questionsContainer.state.livingroom.tvBoxes ===
+                      undefined && this.state.allFields === false
                       ? " o-invalid"
                       : "")
                   }
                 >
                   <div className="o-question-label">
                     Hvor mange TV-bokse har du?
-                    <br />
-                    <span className="o-question-label-info">
-                      (Eksempelvis fra Yousee, TDC eller lignende)
-                    </span>
                   </div>
-                  <div className="o-input-container">
-                    <input
-                      className="o-input"
-                      type="text"
-                      placeholder="Antal TV-bokse"
-                      value={questionsContainer.state.livingroom.tvBoxes}
+                  <div className="o-select-container">
+                    <select
+                      className="o-select"
+                      value={
+                        questionsContainer.state.livingroom.tvBoxes
+                          ? questionsContainer.state.livingroom.tvBoxes
+                          : "Vælg"
+                      }
                       onChange={e => {
-                        questionsContainer.updateNumber(
+                        questionsContainer.updateSelecMenu(
                           "livingroom",
                           "tvBoxes",
                           e.target.value
                         );
                       }}
-                    />
+                    >
+                      <option value="Vælg" disabled hidden>
+                        Vælg
+                      </option>
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
                   </div>
                 </div>
 
@@ -101,29 +147,50 @@ class Livingroom extends Component {
                 <div
                   className={
                     "o-question-row" +
-                    (questionsContainer.state.livingroom.computers === "" &&
-                    this.state.allFields === false
+                    (questionsContainer.state.livingroom.computers ===
+                      undefined && this.state.allFields === false
                       ? " o-invalid"
                       : "")
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange timer om dagen bruger du din computer?
+                    Hvor mange timer om dagen bruger du computeren?
+                    <br />
+                    <span className="o-question-label-info">
+                      (Både stationære og bærbare computere)
+                    </span>
                   </div>
-                  <div className="o-input-container">
-                    <input
-                      className="o-input"
-                      type="text"
-                      placeholder="Antal timer"
-                      value={questionsContainer.state.livingroom.computers}
+                  <div className="o-select-container">
+                    <select
+                      className="o-select"
+                      value={
+                        questionsContainer.state.livingroom.computers
+                          ? questionsContainer.state.livingroom.computers
+                          : "Vælg"
+                      }
                       onChange={e => {
-                        questionsContainer.updateNumber(
+                        questionsContainer.updateSelecMenu(
                           "livingroom",
                           "computers",
                           e.target.value
                         );
                       }}
-                    />
+                    >
+                      <option value="Vælg" disabled hidden>
+                        Vælg
+                      </option>
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
                   </div>
                 </div>
 
@@ -140,16 +207,75 @@ class Livingroom extends Component {
                   <div className="o-question-label">
                     Har du en spillekonsol?
                   </div>
+
+                  <div className="o-radio-container">
+                    <label className="o-radio">
+                      Ja
+                      <input
+                        type="radio"
+                        name="radio"
+                        checked={
+                          questionsContainer.state.livingroom.consols === 1
+                        }
+                        onChange={() =>
+                          questionsContainer.updateRadio(
+                            "livingroom",
+                            "consols",
+                            1
+                          )
+                        }
+                      />
+                      <span className="checkmark" />
+                    </label>
+                    <label className="o-radio">
+                      Nej
+                      <input
+                        type="radio"
+                        name="radio"
+                        checked={
+                          questionsContainer.state.livingroom.consols === 0
+                        }
+                        onChange={() =>
+                          questionsContainer.updateRadio(
+                            "livingroom",
+                            "consols",
+                            0
+                          )
+                        }
+                      />
+                      <span className="checkmark" />
+                    </label>
+                  </div>
+                </div>
+
+                {/* QUESTION */}
+                <div
+                  className={
+                    "o-question-row" +
+                    (questionsContainer.state.livingroom.consolsFrequence ===
+                      "" && this.state.allFields === false
+                      ? " o-invalid"
+                      : "") +
+                    (questionsContainer.state.livingroom.consols === 1
+                      ? ""
+                      : " o-contracted")
+                  }
+                >
+                  <div className="o-question-label">
+                    Hvor mange timer om dagen spiller du?
+                  </div>
                   <div className="o-input-container">
                     <input
                       className="o-input"
                       type="text"
-                      placeholder="Hvor mange timer om dagen spiller du?"
-                      value={questionsContainer.state.livingroom.consols}
+                      placeholder="Timer om dagen"
+                      value={
+                        questionsContainer.state.livingroom.consolsFrequence
+                      }
                       onChange={e => {
                         questionsContainer.updateNumber(
                           "livingroom",
-                          "consols",
+                          "consolsFrequence",
                           e.target.value
                         );
                       }}
@@ -168,7 +294,11 @@ class Livingroom extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange lamper har du i hele dit hjem
+                    Hvor mange lamper har du i hele dit hjem?
+                    <br />
+                    <span className="o-question-label-info">
+                      (En gennemsnitsfamilie har ca. 27 pærer)
+                    </span>
                   </div>
                   <div className="o-input-container">
                     <input
@@ -212,7 +342,7 @@ class Livingroom extends Component {
                       }
                     }}
                   >
-                    Fortsæt
+                    {isMobileOnly ? "Fortsæt" : "Nu skal der vaskes"}
                   </div>
                 </div>
 

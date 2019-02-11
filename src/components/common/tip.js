@@ -29,14 +29,19 @@ class Tip extends Component {
     return (
       <div className="o-tip">
         <img
-          src={this.handleImage(this.state.icon)}
+          src={this.handleImage(this.props.icon)}
           alt="Ikon"
           className="o-tip-img"
           height="60"
         />
-        <div className="o-tip-title" />
-        {/* <div className="o-tip-title">{this.state.title}</div> */}
-        <div className="o-tip-body">{this.state.body}</div>
+        <div
+          className="o-tip-title"
+          dangerouslySetInnerHTML={{ __html: this.props.body.title }}
+        />
+        <div
+          className="o-tip-body"
+          dangerouslySetInnerHTML={{ __html: this.props.body.body }}
+        />
       </div>
     );
   }

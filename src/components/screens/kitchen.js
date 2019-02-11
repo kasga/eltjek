@@ -3,6 +3,7 @@ import ProcessBar from "./../common/processbar";
 import { Subscribe } from "unstated";
 import QuestionsContainer from "../../unstated/questionsContainer";
 import NavigationContainer from "../../unstated/navigationContainer";
+import { isMobileOnly } from "react-device-detect";
 
 class Kitchen extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Kitchen extends Component {
       <Subscribe to={[QuestionsContainer, NavigationContainer]}>
         {(questionsContainer, navigationContainer) => (
           <div id="o-kitchen" className="o-bg-shadow">
+            {questionsContainer.resetCalculator()}
             <div className="o-leftside-img" />
             <div className="o-rightside-content">
               <ProcessBar currentPage="kitchen" />
@@ -231,7 +233,7 @@ class Kitchen extends Component {
                       }
                     }}
                   >
-                    Fortsæt
+                    {isMobileOnly ? "Fortsæt" : "Så går vi ind i stuen"}
                   </div>
                 </div>
 

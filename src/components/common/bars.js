@@ -14,23 +14,11 @@ class Bars extends Component {
     this.setState({ barContainerWidth: this.refs.barComp.offsetWidth });
   }
 
-  calculateYourBarWidth(you, average) {
-    if (you === 0) {
+  calculateBarWidth(max, bar) {
+    if (bar === 0) {
       return "5%";
-    } else if (you > average) {
-      return "100%";
     } else {
-      return (you / average) * 100 + "%";
-    }
-  }
-
-  calculateAverageBarWidth(you, average) {
-    if (you === 0) {
-      return "5%";
-    } else if (average > you) {
-      return "100%";
-    } else {
-      return (average / you) * 100 + "%";
+      return (100 * bar) / max + "%";
     }
   }
 
@@ -47,25 +35,21 @@ class Bars extends Component {
               show: false
             })
           }
-          onClick={() => this.setState({ show: !this.state.show })}
+          onClick={() => this.setState({ show: true })}
         >
           <div
             className="o-comparison-bar-average"
             style={{
-              width: this.calculateAverageBarWidth(
-                this.props.you,
-                this.props.average
-              )
+              width: this.calculateBarWidth(this.props.max, this.props.average)
             }}
           />
+
+          <div className="o-comparison-bar-lead" />
 
           <div
             className="o-comparison-bar-you"
             style={{
-              width: this.calculateYourBarWidth(
-                this.props.you,
-                this.props.average
-              )
+              width: this.calculateBarWidth(this.props.max, this.props.you)
             }}
           />
           <div

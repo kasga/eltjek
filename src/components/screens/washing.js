@@ -3,6 +3,7 @@ import ProcessBar from "./../common/processbar";
 import { Subscribe } from "unstated";
 import QuestionsContainer from "../../unstated/questionsContainer";
 import NavigationContainer from "../../unstated/navigationContainer";
+import { isMobileOnly } from "react-device-detect";
 
 class Washing extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ class Washing extends Component {
       <Subscribe to={[QuestionsContainer, NavigationContainer]}>
         {(questionsContainer, navigationContainer) => (
           <div id="o-washing" className="o-bg-shadow">
+            {questionsContainer.resetCalculator()}
             <div className="o-leftside-img" />
             <div className="o-rightside-content">
               <ProcessBar currentPage="washing" />
@@ -234,7 +236,7 @@ class Washing extends Component {
                       }
                     }}
                   >
-                    Fortsæt
+                    {isMobileOnly ? "Fortsæt" : "Varmer du op?"}
                   </div>
                 </div>
 

@@ -50,7 +50,7 @@
         align-items: flex-start;
         flex-wrap: wrap;
         overflow: hidden;
-        max-height: 400px;
+        max-height: 450px;
         height:auto;
         margin-top:40px;
         padding: 40px 25px 100px 25px;
@@ -104,6 +104,11 @@
         .o-tip-img{
             margin-top: 30px;
         }
+
+        .o-xtra-margin{
+            margin-top:50px;
+        }
+
 
         .o-tip-title{
             font-family: $font-bold;

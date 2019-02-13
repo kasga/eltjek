@@ -408,6 +408,239 @@ select:-moz-focusring {
 
 
 
+
+// SVG ANIMATIONS
+.o-svg-dark{
+    fill:#3B4956;
+}
+
+//Washingmachine
+.o-washingmachine-water{
+    animation-name: WASHINGMACHINE;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 4s;
+}
+
+@-webkit-keyframes WASHINGMACHINE{
+  0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-245px, 0);
+      }
+}
+@-moz-keyframes WASHINGMACHINE{
+0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-245px, 0);
+      }
+}
+@-o-keyframes WASHINGMACHINE{
+0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-245px, 0);
+      }
+}
+@keyframes WASHINGMACHINE{
+0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(-245px, 0);
+      }
+}
+
+
+
+//Kitchen
+.o-kitchen-steam{
+    animation-name: KITCHEN;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-duration: 10s;
+}
+
+@-webkit-keyframes KITCHEN{
+  0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(0, -43px);
+      }
+}
+@-moz-keyframes KITCHEN{
+0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(0, -43px);
+      }
+}
+@-o-keyframes KITCHEN{
+0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(0, -43px);
+      }
+}
+@keyframes KITCHEN{
+0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(0, -43px);
+      }
+}
+
+
+
+
+//Livingroom
+.o-livingroom-poster{
+    animation-name: LIVINGROOM_POSTER;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 5s;
+    transform-origin: 40% 2%;
+}
+
+@-webkit-keyframes LIVINGROOM_POSTER{
+0% {
+        transform: rotate(0deg);
+      }
+      5% {
+        transform: rotate(20deg);
+      }
+      15%{
+          transform: rotate(-30deg);
+      }
+      30%{
+          transform: rotate(20deg);
+      }
+      45%{
+          transform: rotate(-30deg);
+      }
+      60%{
+          transform: rotate(20deg);
+      }
+      70%{
+          transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+}
+@-moz-keyframes LIVINGROOM_POSTER{
+0% {
+        transform: rotate(0deg);
+      }
+      5% {
+        transform: rotate(20deg);
+      }
+      15%{
+          transform: rotate(-30deg);
+      }
+      30%{
+          transform: rotate(20deg);
+      }
+      45%{
+          transform: rotate(-30deg);
+      }
+      60%{
+          transform: rotate(20deg);
+      }
+      70%{
+          transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+}
+@-o-keyframes LIVINGROOM_POSTER{
+0% {
+        transform: rotate(0deg);
+      }
+      5% {
+        transform: rotate(20deg);
+      }
+      15%{
+          transform: rotate(-30deg);
+      }
+      30%{
+          transform: rotate(20deg);
+      }
+      45%{
+          transform: rotate(-30deg);
+      }
+      60%{
+          transform: rotate(20deg);
+      }
+      70%{
+          transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+}
+@keyframes LIVINGROOM_POSTER{
+0% {
+        transform: rotate(0deg);
+      }
+      5% {
+        transform: rotate(20deg);
+      }
+      15%{
+          transform: rotate(-30deg);
+      }
+      30%{
+          transform: rotate(20deg);
+      }
+      45%{
+          transform: rotate(-30deg);
+      }
+      60%{
+          transform: rotate(20deg);
+      }
+      70%{
+          transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+}
+
+
+
+
+
+
+
+
+
+@-webkit-keyframes WASHING{
+  0%   { padding-left:0; }
+  100% { padding-left:300px }
+}
+@-moz-keyframes WASHING{
+  0%   { padding-left:0; }
+  100% { padding-left:300px }
+}
+@-o-keyframes WASHING{
+  0%   { padding-left:0; }
+  100% { padding-left:300px }
+}
+@keyframes WASHING{
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-250px, 0); }
+}
+
+
 /* TABLET PORTRAIT */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
   

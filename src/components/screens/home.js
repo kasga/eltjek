@@ -20,12 +20,14 @@ class Home extends Component {
               </div>
               Tjek dit elforbrug
             </div>
+
             <h1>
               <p className="o-headline1">Bor du i hus eller lejlighed?</p>
             </h1>
             <div className="o-house-options">
               <div className="o-house-option">
                 <div
+                  className="o-house-container"
                   onClick={() => {
                     questionsContainer.updateHousingType("hus");
                     let p = navigationContainer.getNextPage("hus");
@@ -33,8 +35,19 @@ class Home extends Component {
                   }}
                 >
                   <img
+                    src="https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/sun"
+                    alt=""
+                    className="o-sun"
+                  />
+                  <img
+                    src="https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/sun"
+                    alt=""
+                    className="o-sun"
+                  />
+                  <img
                     src="https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/house8dcf1316"
                     alt=""
+                    className="o-house"
                   />
                 </div>
                 <br />
@@ -51,6 +64,7 @@ class Home extends Component {
               </div>
               <div className="o-house-option">
                 <div
+                  className="o-house-container"
                   onClick={() => {
                     questionsContainer.updateHousingType("lejlighed");
                     let p = navigationContainer.getNextPage("lejlighed");
@@ -58,8 +72,19 @@ class Home extends Component {
                   }}
                 >
                   <img
+                    src="https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/cloud1"
+                    alt=""
+                    className="cloud1"
+                  />
+                  <img
+                    src="https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/cloud2"
+                    alt=""
+                    className="cloud2"
+                  />
+                  <img
                     src="https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/appartmente9db8efb"
                     alt=""
+                    className="o-building"
                   />
                 </div>
                 <br />

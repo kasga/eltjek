@@ -8,10 +8,10 @@ import Bars from "../common/bars";
 import Tip from "../common/tip";
 import PdfButton from "../common/pdf";
 
-import imgKitchen from "./../../images/kitchen.svg";
-import imgLivingroom from "./../../images/livingroom.svg";
-import imgWashing from "./../../images/washing.svg";
-import imgFloor from "./../../images/floor.svg";
+import { ReactComponent as ImgKitchen } from "./../../images/kitchen.svg";
+import { ReactComponent as ImgLivingroom } from "./../../images/livingroom.svg";
+import { ReactComponent as ImgWashing } from "./../../images/washing.svg";
+import { ReactComponent as ImgFloor } from "./../../images/floor.svg";
 
 class Result extends Component {
   constructor(props) {
@@ -126,7 +126,7 @@ class Result extends Component {
                   {/* Comparison boxes */}
                   <div className="o-comparison-boxes">
                     <div className="o-comparison-box">
-                      <img src={imgKitchen} alt="Køkken" height="70" />
+                      <ImgKitchen height="70" />
                       <div className="o-label">Køkken</div>
                       <div className="o-comparison-bars">
                         {/* Bar container */}
@@ -169,7 +169,7 @@ class Result extends Component {
                       </div>
                     </div>
                     <div className="o-comparison-box">
-                      <img src={imgLivingroom} alt="Stue" height="70" />
+                      <ImgLivingroom height="70" />
                       <div className="o-label">Stue</div>
                       <div className="o-comparison-bars">
                         {/* Bar container */}
@@ -236,7 +236,7 @@ class Result extends Component {
                       </div>
                     </div>
                     <div className="o-comparison-box">
-                      <img src={imgWashing} alt="Elvarme" height="60" />
+                      <ImgWashing height="60" />
                       <div className="o-label">Vasketøj</div>
                       <div className="o-comparison-bars">
                         {/* Bar container */}
@@ -267,7 +267,7 @@ class Result extends Component {
                       </div>
                     </div>
                     <div className="o-comparison-box">
-                      <img src={imgFloor} alt="Gulvvarme" height="60" />
+                      <ImgFloor height="60" />
                       <div className="o-label">Gulvvarme</div>
                       <div className="o-comparison-bars">
                         {/* Bar container */}

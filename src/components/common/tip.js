@@ -36,7 +36,7 @@ class Tip extends Component {
           ""
         )}
 
-        {this.props.icon === "imgHeating" ? (
+        {this.props.icon === "imgFloor" ? (
           <ImgFloor className="o-tip-img o-xtra-margin" height="60" />
         ) : (
           ""

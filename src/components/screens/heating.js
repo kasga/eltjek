@@ -25,9 +25,9 @@ class Heating extends Component {
       valid = false;
     }
 
-    if (fields["electric"] === 1 && fields["electricUsageFrequence"] === "") {
-      valid = false;
-    }
+    // if (fields["electric"] === 1 && fields["electricUsageFrequence"] === "") {
+    //   valid = false;
+    // }
 
     return valid;
   };
@@ -53,7 +53,7 @@ class Heating extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Har du gulvvarme i et eller flere rum i dit hjem?
+                    Har du elgulvvarme i et eller flere rum i dit hjem?
                   </div>
                   <div className="o-radio-container">
                     <label className="o-radio">
@@ -97,7 +97,7 @@ class Heating extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange m<sup>2</sup> gulvvarme har du i dit hjem?
+                    Hvor mange m<sup>2</sup> elgulvvarme har du i dit hjem?
                   </div>
                   <div className="o-input-container">
                     <input
@@ -130,7 +130,7 @@ class Heating extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange måneder om året er din gulvvarme tændt?
+                    Hvor mange måneder om året er din elgulvvarme tændt?
                   </div>
                   <div className="o-input-container">
                     <input
@@ -161,7 +161,9 @@ class Heating extends Component {
                       : "")
                   }
                 >
-                  <div className="o-question-label">Har du elvarme?</div>
+                  <div className="o-question-label">
+                    Har du elvarme i øvrigt?
+                  </div>
                   <div className="o-radio-container">
                     <label className="o-radio">
                       Ja
@@ -202,7 +204,7 @@ class Heating extends Component {
                   </div>
                 </div>
 
-                {/* QUESTION */}
+                {/* QUESTION
                 <div
                   className={
                     "o-question-row" +
@@ -235,7 +237,7 @@ class Heating extends Component {
                       }}
                     />
                   </div>
-                </div>
+                </div> */}
 
                 {/* Bottom navigation */}
                 <div className="o-bottom-nav">

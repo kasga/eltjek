@@ -9,7 +9,7 @@ import Heating from "./components/screens/heating";
 import Result from "./components/screens/result";
 import queryString from "query-string";
 
-import _ from "underscore";
+// import _ from "underscore";
 import "./scss/index.scss";
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
 
   skipFirstPage = () => {
     const query = queryString.parse(window.location.search);
-    if (!_.isEmpty(query)) {
+    if (query.type === "beboere") {
       return <Redirect to={query.type} />;
     }
   };

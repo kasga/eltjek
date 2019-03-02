@@ -40,16 +40,21 @@ class Bars extends Component {
           <div
             className="o-comparison-bar-average"
             style={{
-              width: this.calculateBarWidth(this.props.max, this.props.average)
+              width:
+                this.props.animate === "true"
+                  ? this.calculateBarWidth(this.props.max, this.props.average)
+                  : 0
             }}
           />
 
           <div className="o-comparison-bar-lead" />
-
           <div
             className="o-comparison-bar-you"
             style={{
-              width: this.calculateBarWidth(this.props.max, this.props.you)
+              width:
+                this.props.animate === "true"
+                  ? this.calculateBarWidth(this.props.max, this.props.you)
+                  : 0
             }}
           />
           <div

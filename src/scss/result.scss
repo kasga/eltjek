@@ -98,7 +98,7 @@
         padding: 15px 35px;
         text-align: left;
         
-  white-space: pre-wrap;
+        white-space: pre-wrap;
 
 
         .o-tip-img{
@@ -239,10 +239,12 @@
                                 width:100%;
                                 height:25px;
                                 border-radius: 0 100px 100px 0;
+                                
                             }
 
                             .o-comparison-bar-you{
                                 position: absolute;
+                                width:0%;
                                 top:0;
                                 left:0;
                                 height:15px;
@@ -250,11 +252,14 @@
                                 border-radius: 0 50px 50px 0;
                                 z-index: 2;
                                 cursor: pointer;
-                                transition:all 200ms ease-out;
+                                transition:all 1s ease-out; 
 
                             }
+
+
                             .o-comparison-bar-average{
                                 position: absolute;
+                                width:0%;
                                 top:10px;
                                 left:0;
                                 height:15px;
@@ -262,7 +267,7 @@
                                 border-radius: 0 50px 50px 0;
                                 z-index: 0;
                                 cursor: pointer;
-                                transition:all 300ms ease-out;
+                                transition:all 1s ease-out; 
                             }
 
                             .o-comparison-tooltip-you{
@@ -284,6 +289,46 @@
         position: relative;
         display: inline-block;
         margin-top:40px;
+    }
+
+    .pdfBtnBounce{
+        animation-name: PDFBOUNCE;
+        animation-timing-function: ease-in-out;
+        animation-duration: 1.4s;
+        transform-origin: center center;
+    }
+
+    @-webkit-keyframes PDFBOUNCE{
+    0%   { transform:scale(1,1) }
+    20% { transform:scale(1.1, 1.1) }
+    40%   { transform:scale(1,1) }
+    60% { transform:scale(1.1, 1.1) }
+    80%   { transform:scale(1,1) }
+    100%   { transform:scale(1,1) }
+    }
+    @-moz-keyframes PDFBOUNCE{
+    0%   { transform:scale(1,1) }
+    20% { transform:scale(1.1, 1.1) }
+    40%   { transform:scale(1,1) }
+    60% { transform:scale(1.1, 1.1) }
+    80%   { transform:scale(1,1) }
+    100%   { transform:scale(1,1) }
+    }
+    @-o-keyframes PDFBOUNCE{
+    0%   { transform:scale(1,1) }
+    20% { transform:scale(1.1, 1.1) }
+    40%   { transform:scale(1,1) }
+    60% { transform:scale(1.1, 1.1) }
+    80%   { transform:scale(1,1) }
+    100%   { transform:scale(1,1) }
+    }
+    @keyframes PDFBOUNCE{
+    0%   { transform:scale(1,1) }
+    20% { transform:scale(1.1, 1.1) }
+    40%   { transform:scale(1,1) }
+    60% { transform:scale(1.1, 1.1) }
+    80%   { transform:scale(1,1) }
+    100%   { transform:scale(1,1) }
     }
 
 

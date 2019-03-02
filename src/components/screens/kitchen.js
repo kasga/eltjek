@@ -17,7 +17,6 @@ class Kitchen extends Component {
   validateFields = fields => {
     let valid = true;
     Object.keys(fields).map((key, index) => {
-      console.log(fields["dishwasher"]);
       if (
         (fields[key] === undefined && fields["dishwasher"] !== 0) ||
         (fields[key] === "" && fields["dishwasher"] !== 0)

@@ -31,6 +31,7 @@ class Residents extends Component {
         {(questionsContainer, navigationContainer) => (
           <div id="o-residents" className="o-bg-shadow">
             {questionsContainer.resetCalculator()}
+
             <div className="o-leftside-img" />
             <div className="o-rightside-content">
               <ProcessBar currentPage="residents" />
@@ -50,7 +51,7 @@ class Residents extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Antal voksne i hustanden (over 20 år)
+                    Antal voksne i husstanden (over 20 år)
                   </div>
                   <div className="o-select-container">
                     <select
@@ -97,7 +98,7 @@ class Residents extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Antal teenagere i hustanden (13 - 19 år)
+                    Antal teenagere i husstanden (13 - 19 år)
                   </div>
                   <div className="o-select-container">
                     <select
@@ -195,7 +196,7 @@ class Residents extends Component {
                     hvor mange?
                     <br />
                     <span className="o-question-label-info">
-                      (pensionist, på barsel eller lignende)?
+                      (Pensionist, på barsel eller lignende)
                     </span>
                   </div>
                   <div className="o-select-container">

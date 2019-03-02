@@ -35,18 +35,20 @@
         },
 
         "heating": {
-            "floorSize": 120,
-            "electricUsageFrequence": 80
+            "floorSize": 100,
+            "electricUsageFrequence": 100
         },
 
         "extras":{
             "house":{
                 "child":350,
-                "teenager":550
+                "teenager":550,
+                "adult": 850
             },
             "appartment":{
                 "child": 200,
-                "teenager": 450
+                "teenager": 450,
+                "adult": 850
             },
             "athome":1000
         },
@@ -68,23 +70,23 @@
         "tipsBad": {
             "stove": {"title":"Du bruger helt sikkert låget, ikke?", "body":"Når det bobler og koger på dit komfur, så husk lige at lægge låg på gryden. Glemmer du låget, bruger du nemlig tre gange så meget strøm. Så brug låget, og spar på strømmen."},
             
-            "fridge": {"title":"Er der pingviner i dit køleskab?", "body":"Den optimale temperatur i et køleskab er +5°C. Er det koldere, bruger du mere strøm end nødvendigt, og er det varmere, risikerer du, at dine madvarer bliver knap så lækre. Derfor er det vigtig at holde temperaturen på det rigtige niveau. \n\nOg vidste du for resten, at et indbygget køleskab koster mere på elregningen end et fritstående? Ventilationen omkring et køleskabet, der er pakket ind i skabe, er ikke super god, og derfor bruger det mere energi på at komme af med varmen."},
-            "tv": {"title":"Pas på dine øjne ikke bliver firkantede", "body":"Du er lidt gladere for fjernsyn end gennemsnittet, og det kan godt koste lidt på din elregning.\n\nMen hvilken type af fjernsyn har du? Vidste du, at et plasma-tv suger over dobbelt så meget strøm som et LED-tv. Så tjek energimærket næste gang du køber et fjernsyn. \n\nOg størrelsen – den har også noget at sige. Jo større skærm, des højere strømforbrug."},
+            "fridge": {"title":"Er der pingviner i dit køleskab?", "body":"Den optimale temperatur i et køleskab er +5°C. Er det koldere, bruger du mere strøm end nødvendigt, og er det varmere, risikerer du, at dine madvarer bliver knap så lækre. Derfor er det vigtigt at holde temperaturen på det rigtige niveau. \n\nOg vidste du for resten, at et indbygget køleskab koster mere på elregningen end et fritstående? Ventilationen omkring et køleskab, der er pakket ind i skabe, er ikke super god, og derfor bruger det mere energi på at komme af med varmen."},
+            "tv": {"title":"Pas på dine øjne ikke bliver firkantede", "body":"Du er lidt gladere for fjernsyn end gennemsnittet, og det kan godt koste lidt på din elregning.\n\nMen hvilken type fjernsyn har du? Vidste du, at et plasma-tv suger over dobbelt så meget strøm som et LED-tv. Så tjek energimærket, næste gang du køber et fjernsyn. \n\nOg størrelsen – den har også noget at sige. Jo større skærm, des højere strømforbrug."},
             "tvBoxes": {"title":"Et lille tryk kan spare dig for meget", "body":"Du har flere TV-bokse end gennemsnittet, så for dig kan det betale sig at slukke for din TV-boks på kontakten. Standby-forbruget for en TV-boks er nemlig højt, så sluk på kontakten og spar nemme penge."},
-            "dishwasher": {"title":"Er din opvaskemaskine på overarbejde?", "body":"Det ser ud til at din opvaskemaskine kører derud af. Den vasker i hvert fald oftere end hos andre husstande, der ligner din. \n\nFor dig er det en ekstra god idé at lege Tetris med glas og kopper, så opvaskeren er fyldt helt op. Og måske kan du også skrue lidt ned for temperaturen? Vasker du ved 50/55 °C i stedet for 65 °C, bruger du 10-20 % mindre strøm. Så vil du også få et takkekort fra dine glas og dit porcelæn. En lavere temperatur er nemlig mere skånsom for dit service."} ,
-            "computers": {"title":"Lad bare din computer sove", "body":"Det ser ud til, at du bruger mere strøm på stationære computere end gennemsnittet. Vil du spare lidt, så sæt dine computere til at gå i dvale automatisk, når du ikke lige bruger dem. Og overvej også, om du skal vælge en bærbar computer næste gang – den bruger kun 1/3 af strømmen."} ,
-            "consols": {"title":"Din spillekonsol stjæler nemt fra dig", "body":"Hjemme hos dig kan I vist godt lide at hygge med et godt spil. Men vidste du, at en spillekonsol kan være en lille tyv på elregningen. Den kan bruge strøm for op mod 2.800 kr. om året, hvis den står tændt hele tiden. Derfor er det gode råd til dig: Undgå at din konsol står på standby – sluk på kontakten.\n\nOg spiller du en time mindre om dagen, sparer du 100 kr. om året på elregningen."} ,
-            "lamps": {"title":"Kan dine lamper lyse lidt billigere?", "body":"Selv om belysning ikke er den store strømsluger i de fleste hjem, så har du lidt flere lamper end gennemsnittet. \n\nHvis du endnu ikke har udskiftet halogenspots og glødepærer med LED-pærer, så er det bare om at komme i gang. Sammenlignet med glødepærer bruger LED-pærer 25 % mindre strøm og holder 10-15 gange længere.\n\nOg husk at bruge det lys, der er helt gratis – nemlig dagslys."}  ,
-            "washingmachine": {"title":"Din vaskemaskine arbejder hårdt", "body":"Din vaskemaskine er vist på fuldtidsarbejde, og det kan godt koste lidt ekstra på din elregning. Men der er heldigvis et par ting, du selv kan gøre for at spare lidt. \n\nDropper du kogevasken og vasker i stedet på 60 °C, sparer du strøm. Og det er nok til at få tøjet rent. Til kulørt tøj er 40 °C helt fint. Og det gode gamle råd gælder stadig: Fyld vaskemaskinen helt op, hver gang du vasker."} ,
-            "dryer": {"title":"Tør tøjet grønt, når du kan", "body":"Din tørretumbler kører oftere end gennemsnittet, og det kan sikkert mærkes på din elregning. Husk at fylde den op, men undgå at proppe den. For meget tøj gør tørretiden længere, og så bruger du mere strøm. Oveni bliver dit tøj mere krøllet. \n\nVil være lidt grønnere, så tjek vejrudsigten og hæng tøjet uden for i stedet. Så er du ekstra god ved både miljøet og din elregning. "} ,
-            "floor": {"title":"Varme i fusserne er dejligt, men…", "body":"Du har gulvvarme på et større areal end de fleste, og derfor har vi et par gode fifs til dig. \n\nVil du bruge så lidt energi på din gulvvarme som muligt, så husk at lukke dørene til rum, hvor der ikke er varme på eller rum med lavere temperatur. Ellers kommer din gulvvarme på overarbejde. Og husk at du har den optimale temperatur, hvis dit gulv hverken føles varmt eller koldt."}  
+            "dishwasher": {"title":"Er din opvaskemaskine på overarbejde?", "body":"Det ser ud til at din opvaskemaskine kører derudad. Den vasker i hvert fald oftere end hos andre husstande, der ligner din. \n\nFor dig er det en ekstra god idé at lege Tetris med glas og kopper, så opvaskeren er fyldt helt op. Og måske kan du også skrue lidt ned for temperaturen? Vasker du ved 50/55 °C i stedet for 65 °C, bruger du 10-20 % mindre strøm. Så vil du også få et takkekort fra dine glas og dit porcelæn. En lavere temperatur er nemlig mere skånsom for dit service."},
+            "computers": {"title":"Lad bare din computer sove", "body":"Det ser ud til, at du bruger mere strøm på computere end gennemsnittet. Vil du spare lidt, så sæt dine computere til at gå i dvale automatisk, når du ikke lige bruger dem. Og har du en stationær computer, så overvej, om den skal skiftes ud med en bærbar – den bruger nemlig kun 1/3 af strømmen."},
+            "consols": {"title":"Din spillekonsol stjæler nemt fra dig", "body":"Hjemme hos dig kan I vist godt lide at hygge med et godt spil. Men vidste du, at en spillekonsol kan være en lille tyv på elregningen. Den kan bruge strøm for op mod 2.800 kr. om året, hvis den står tændt hele tiden. Derfor er det gode råd til dig: Undgå at din konsol står på standby – sluk på kontakten.\n\nOg spiller du en time mindre om dagen, sparer du 100 kr. om året på elregningen."},
+            "lamps": {"title":"Kan dine lamper lyse lidt billigere?", "body":"Selv om belysning ikke er den store strømsluger i de fleste hjem, så har du lidt flere pærer end gennemsnittet. \n\nHvis du endnu ikke har udskiftet halogenspots og glødepærer med LED-pærer, så er det bare om at komme i gang. Sammenlignet med glødepærer bruger LED-pærer 25 % mindre strøm og holder 10-15 gange længere.\n\nOg husk at bruge det lys, der er helt gratis nemlig dagslys."},
+            "washingmachine": {"title":"Din vaskemaskine arbejder hårdt", "body":"Din vaskemaskine er vist på fuldtidsarbejde, og det kan godt koste lidt ekstra på din elregning. Men der er heldigvis et par ting, du selv kan gøre for at spare lidt. \n\nDropper du kogevasken og vasker i stedet på 60 °C, sparer du strøm. Og det er nok til at få tøjet rent. Til kulørt tøj er 40 °C helt fint. Og det gode gamle råd gælder stadig: Fyld vaskemaskinen helt op, hver gang du vasker."},
+            "dryer": {"title":"Tør tøjet grønt, når du kan", "body":"Din tørretumbler kører oftere end gennemsnittet, og det kan sikkert mærkes på din elregning. Husk at fylde den op, men undgå at proppe den. For meget tøj gør tørretiden længere, og så bruger du mere strøm. Oveni bliver dit tøj mere krøllet. \n\nVil du være lidt grønnere, så tjek vejrudsigten, og hæng tøjet udenfor i stedet. Så er du ekstra god ved både miljøet og din elregning."},
+            "floor": {"title":"Varme i fusserne er dejligt, men…", "body":"Du har gulvvarme på et større areal end de fleste, og derfor har vi et par gode fifs til dig. \n\nVil du bruge så lidt energi på din elgulvvarme som muligt, så husk at lukke dørene til rum, hvor der ikke er varme på eller rum med lavere temperatur. Ellers kommer din gulvvarme på overarbejde. Og husk at du har den optimale temperatur, hvis dit gulv hverken føles varmt eller koldt."}  
         },
         "tipsGood":{
             "stove": {"title":"Husk låget", "body":"Brug låget, når du koger noget. Du bruger faktisk tre gange så meget el, hvis du koger noget uden låg."} ,
-            "tv": {"title":"Hvor stort et dit tv?", "body":"Vidste du, at størrelse på dit tv påvirker dit elforbrug? Jo større skærmen er, des mere strøm Hvor stort et dit tv?"} ,
-            "dishwasher": {"title":"10 °C ned kan spare dig for meget", "body":"Når vælger et program på 50/55 °C i stedet for 65 °C på din opvaskemaskine, bruger du 10-20 % mindre strøm. Og du vil endda også få et takkekort fra dine glas og dit porcelæn. En lavere temperatur er nemlig mere skånsom for dit service."}  ,
-            "consols": {"title":"Spil mindre, og betal mindre", "body":"Har du en Xbox kan du skære 100 kr. af elregningen om året, hvis du spiller 1 time mindre om dagen."}  ,
-            "lamps": {"title":"Har du LED-pærer overalt?", "body":"Har du ikke allerede LED-ificeret alle dine lamper, er det bare med at komme i gang med at udskifte dine pærer. En LED-pære holder 10-15 gange længere end en glødepære og bruger mindre strøm."} ,
+            "tv": {"title":"Hvor stort et dit tv?", "body":"Vidste du, at størrelsen på dit tv påvirker dit elforbrug? Jo større skærmen er, des mere strøm."} ,
+            "dishwasher": {"title":"10 °C ned kan spare dig for meget", "body":"Når du vælger et program på 50/55 °C i stedet for 65 °C på din opvaskemaskine, bruger du 10-20 % mindre strøm. Og du vil endda også få et takkekort fra dine glas og dit porcelæn. En lavere temperatur er nemlig mere skånsom for dit service."}  ,
+            "consols": {"title":"Spil mindre, og betal mindre", "body":"Har du en Xbox, kan du skære 100 kr. af elregningen om året, hvis du spiller 1 time mindre om dagen."}  ,
+            "lamps": {"title":"Har du LED-pærer overalt?", "body":"Har du ikke allerede LED-ificeret alle dine pærer, er det bare med at komme i gang med at udskifte dine pærer. En LED-pære holder 10-15 gange længere end en glødepære og bruger mindre strøm."} ,
             "washingmachine": {"title":"Vasker du varmere end nødvendigt?", "body":"Du kan spare strøm super nemt, når du vasker. Dropper du kogevasken og snupper en vask på 60 °C i stedet, bruger du mindre strøm, og tøjet bliver lige så rent."}  ,
             "dryer": {"title":"Fnugger dit filter?", "body":"Vidste du, at det tager længere tid at tørre tøj i en tørretumbler, hvis du glemmer at rense fnugfilteret? Så tjek lige filteret, inden du trykker start – så sparer du både tid og penge på strøm."}  
         }

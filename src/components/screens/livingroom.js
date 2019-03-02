@@ -108,6 +108,10 @@ class Livingroom extends Component {
                 >
                   <div className="o-question-label">
                     Hvor mange TV-bokse har du?
+                    <br />
+                    <span className="o-question-label-info">
+                      (Apple TV og Google Chromecast tæller ikke som TV-bokse)
+                    </span>
                   </div>
                   <div className="o-select-container">
                     <select
@@ -154,10 +158,10 @@ class Livingroom extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange timer om dagen bruger du computeren?
+                    Hvor mange timer om dagen bruger du en computer?
                     <br />
                     <span className="o-question-label-info">
-                      (Både stationære og bærbare computere)
+                      (Både stationære og bærbare computere tæller med)
                     </span>
                   </div>
                   <div className="o-select-container">
@@ -294,10 +298,11 @@ class Livingroom extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange lamper har du i hele dit hjem?
+                    Hvor mange pærer og spots har du i dit hjem – både inde og
+                    ude?
                     <br />
                     <span className="o-question-label-info">
-                      (En gennemsnitsfamilie har ca. 27 pærer)
+                      (En gennemsnitsfamilie har ca. 27 pærer/spots)
                     </span>
                   </div>
                   <div className="o-input-container">

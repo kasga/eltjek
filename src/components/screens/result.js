@@ -4,6 +4,7 @@ import { Subscribe } from "unstated";
 
 import QuestionsContainer from "../../unstated/questionsContainer";
 import NavigationContainer from "../../unstated/navigationContainer";
+import Waypoint from "react-waypoint";
 import Bars from "../common/bars";
 import Tip from "../common/tip";
 import PdfButton from "../common/pdf";
@@ -22,7 +23,10 @@ class Result extends Component {
       tipsOpen: false,
       paragraphs: 0,
       questionContainer: undefined,
-      questionsCont: undefined
+      questionsCont: undefined,
+      animateBarsPart1: "false",
+      animateBarsPart2: "false",
+      downloadPDF: "false"
     };
   }
 
@@ -60,12 +64,13 @@ class Result extends Component {
                   {questionsContainer.state.result.usage === "over" ? (
                     <div>
                       <div className="o-headline1 o-center">
-                        Vups! Du ligger vist i den i høje ende
+                        Vups! Du ligger vist i den høje ende
                       </div>
                       <div className="o-center o-subheading">
-                        Det er ser ud til, at du bruger lidt mere strøm end
-                        gennemsnittet. Med et par små fifs kan vi sammen måske
-                        ændre lidt på det?
+                        Ud fra dine svar om dit hjem og dine vaner ser det ud
+                        til, at du bruger mere strøm end andre, der ligner dig.
+                        Med et par små fifs kan vi sammen måske ændre lidt på
+                        det?
                       </div>
                     </div>
                   ) : (
@@ -74,9 +79,10 @@ class Result extends Component {
                         Sådan! Du er en haj til det med strøm
                       </div>
                       <div className="o-center o-subheading">
-                        Det er ser ud til, at du bruger mindre strøm end
-                        gennemsnittet. Godt gået! Måske er der alligevel et råd
-                        eller to, som en elhaj som dig kan hapse med.
+                        Ud fra dine svar om dit hjem og dine vaner ser det ud
+                        til, at du bruger mindre strøm end andre, der ligner
+                        dig. Godt gået. Måske er der alligevel et råd eller to,
+                        som en elhaj som dig kan hapse med.
                       </div>
                     </div>
                   )}
@@ -115,16 +121,27 @@ class Result extends Component {
                   <div className="o-comparison-top o-center">
                     <div className="o-comparison-top-item">
                       <span className="o-comparison-you-box" />
-                      Dit årligeforbrug
+                      Dit årlige forbrug
                     </div>
                     <div className="o-comparison-top-item">
                       <span className="o-comparison-average-box" />
-                      Gennemsnitsforbruget
+                      Gennemsnitsforbrug for en husstand, der ligner din
                     </div>
                   </div>
 
                   {/* Comparison boxes */}
                   <div className="o-comparison-boxes">
+                    {/* WAYPOINTS */}
+                    <Waypoint
+                      bottomOffset="50%"
+                      onEnter={({
+                        previousPosition,
+                        currentPosition,
+                        event
+                      }) => {
+                        this.setState({ animateBarsPart1: "true" });
+                      }}
+                    />
                     <div className="o-comparison-box">
                       <ImgKitchen height="70" />
                       <div className="o-label">Køkken</div>
@@ -141,6 +158,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Komfur"
+                          animate={this.state.animateBarsPart1}
                         />
                         <Bars
                           you={
@@ -153,6 +171,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Køleskab"
+                          animate={this.state.animateBarsPart1}
                         />
                         <Bars
                           you={
@@ -165,6 +184,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Opvaskemaskine"
+                          animate={this.state.animateBarsPart1}
                         />
                       </div>
                     </div>
@@ -184,6 +204,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Tv"
+                          animate={this.state.animateBarsPart1}
                         />
                         <Bars
                           you={
@@ -196,6 +217,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Tvbokse"
+                          animate={this.state.animateBarsPart1}
                         />
                         <Bars
                           you={
@@ -208,6 +230,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Computere"
+                          animate={this.state.animateBarsPart1}
                         />
                         <Bars
                           you={
@@ -220,6 +243,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Spillekonsoller"
+                          animate={this.state.animateBarsPart1}
                         />
                         <Bars
                           you={
@@ -232,10 +256,22 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Lamper"
+                          animate={this.state.animateBarsPart1}
                         />
                       </div>
                     </div>
                     <div className="o-comparison-box">
+                      {/* WAYPOINTS */}
+                      <Waypoint
+                        bottomOffset="30%"
+                        onEnter={({
+                          previousPosition,
+                          currentPosition,
+                          event
+                        }) => {
+                          this.setState({ animateBarsPart2: "true" });
+                        }}
+                      />
                       <ImgWashing height="60" />
                       <div className="o-label">Vasketøj</div>
                       <div className="o-comparison-bars">
@@ -251,6 +287,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Vaskemaskine"
+                          animate={this.state.animateBarsPart2}
                         />
                         <Bars
                           you={
@@ -263,12 +300,13 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label={"Tørretumbler"}
+                          animate={this.state.animateBarsPart2}
                         />
                       </div>
                     </div>
                     <div className="o-comparison-box">
                       <ImgFloor height="60" />
-                      <div className="o-label">Gulvvarme</div>
+                      <div className="o-label">Elgulvvarme</div>
                       <div className="o-comparison-bars">
                         {/* Bar container */}
                         <Bars
@@ -281,7 +319,8 @@ class Result extends Component {
                               .floor
                           }
                           max={questionsContainer.state.result.maxUsage}
-                          label="Gulvvarme"
+                          label="Elgulvvarme"
+                          animate={this.state.animateBarsPart2}
                         />
                         <Bars
                           you={
@@ -294,6 +333,7 @@ class Result extends Component {
                           }
                           max={questionsContainer.state.result.maxUsage}
                           label="Elvarme"
+                          animate={this.state.animateBarsPart2}
                         />
                       </div>
                     </div>
@@ -301,10 +341,21 @@ class Result extends Component {
                 </div>
 
                 {/* PDF DOWNLOAD BUTTON */}
-                <PdfButton data={questionsContainer.state} />
+                {/* WAYPOINTS */}
+                <Waypoint
+                  bottomOffset="30%"
+                  onEnter={({ event }) => {
+                    this.setState({ downloadPDF: "true" });
+                  }}
+                />
+                <PdfButton
+                  data={questionsContainer.state}
+                  bounce={this.state.downloadPDF}
+                  ga={navigationContainer}
+                />
 
                 {/* APP */}
-                <div className="o-selfservice-container">
+                {/* <div className="o-selfservice-container">
                   <div className="o-selfservice">
                     <div className="o-headline1">
                       Log ind på vores selvbetjening og følg dit forbrug
@@ -313,9 +364,6 @@ class Result extends Component {
                       data-target="#LoginToasterOverlay"
                       data-toggle="modal"
                       className="o-btn o-blue"
-                      onClick={() => {
-                        window.location = "https://shop.orsted.dk/tilbud/";
-                      }}
                     >
                       Se forbrug
                     </div>
@@ -350,7 +398,7 @@ class Result extends Component {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* ØRSTED SHOP */}
                 <div className="o-orstedshop">
                   <div className="o-orstedshop-img">
@@ -361,8 +409,9 @@ class Result extends Component {
                       <div
                         className="o-btn o-blue"
                         onClick={() => {
+                          navigationContainer.GAevent("shop");
                           window.location =
-                            "https://orsted.dk/Privat/Kundeservice/Forbrug/Spoerg-energiraadgiverne/Book-et-telefonmoede";
+                            "https://shop.orsted.dk/brand/philips-hue/";
                         }}
                       >
                         Til Ørstedshoppen
@@ -376,6 +425,7 @@ class Result extends Component {
                     <div
                       className="o-btn o-blue"
                       onClick={() => {
+                        navigationContainer.GAevent("energiraadgiver");
                         window.location =
                           "https://orsted.dk/Privat/Kundeservice/Forbrug/Spoerg-energiraadgiverne/Book-et-telefonmoede";
                       }}
@@ -396,7 +446,7 @@ class Result extends Component {
                     Tilbage
                   </div>
                 </div>
-                <h3>Brugerens input</h3>
+                {/* <h3>Brugerens input</h3>
                 {JSON.stringify(questionsContainer.state.housing)}
                 <br />
                 <br />
@@ -423,7 +473,7 @@ class Result extends Component {
                 <br />
                 <br />
                 <h3>Datagrundlag</h3>
-                {JSON.stringify(questionsContainer.state.data)}
+                {JSON.stringify(questionsContainer.state.data)} */}
               </div>
             </div>
           </div>

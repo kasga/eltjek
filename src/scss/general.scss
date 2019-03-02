@@ -624,16 +624,16 @@ select:-moz-focusring {
 
 
 @-webkit-keyframes WASHING{
-  0%   { padding-left:0; }
-  100% { padding-left:300px }
+   0%   { transform: translate(0, 0); }
+  100% { transform: translate(-250px, 0); }
 }
 @-moz-keyframes WASHING{
-  0%   { padding-left:0; }
-  100% { padding-left:300px }
+   0%   { transform: translate(0, 0); }
+  100% { transform: translate(-250px, 0); }
 }
 @-o-keyframes WASHING{
-  0%   { padding-left:0; }
-  100% { padding-left:300px }
+   0%   { transform: translate(0, 0); }
+  100% { transform: translate(-250px, 0); }
 }
 @keyframes WASHING{
   0%   { transform: translate(0, 0); }
@@ -686,6 +686,10 @@ select:-moz-focusring {
 /* PHONE PORTRAIT */
 @media only screen and (max-device-width: 767px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
   
+  #o-eltjek{
+    margin:10px 5px 50px 5px;
+  }
+
   .o-question-row{
       flex-direction: column;
       align-items: flex-start;

@@ -236,7 +236,7 @@ class Washing extends Component {
                       }
                     }}
                   >
-                    {isMobileOnly ? "Fortsæt" : "Varmer du op?"}
+                    {isMobileOnly ? "Fortsæt" : "Nu til opvarmning"}
                   </div>
                 </div>
 

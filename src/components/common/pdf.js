@@ -26,7 +26,7 @@ class PdfButton extends Component {
       kitchenY: 170,
       livingroomY: 170,
       barsLeftX: 55,
-      barsRightX: 140,
+      barsRightX: 145,
       textRightX: 115,
       barsSpacing: 13,
       barWidth: 50,
@@ -47,13 +47,13 @@ class PdfButton extends Component {
     let title;
     let subtitleTxt;
     if (this.props.data.result.usage === "over") {
-      title = "Vups! Du ligger vist i den i høje ende";
+      title = "Vups! Du ligger vist i den høje ende";
       subtitleTxt =
-        "Det er ser ud til, at du bruger lidt mere strøm end gennemsnittet. Med et par små fifs kan vi sammen måske ændre lidt på det ?";
+        "Ud fra dine svar om dit hjem og dine vaner ser det ud til, at du bruger mere strøm end andre, der ligner dig. Med et par små fifs kan vi sammen måske ændre lidt på det?";
     } else {
       title = "Sådan! Du er en haj til det med strøm";
       subtitleTxt =
-        "Det er ser ud til, at du bruger mindre strøm end gennemsnittet.Godt gået! Måske er der alligevel et råd eller to, som en elhaj som dig kan hapse med.";
+        "Ud fra dine svar om dit hjem og dine vaner ser det ud til, at du bruger mindre strøm end andre, der ligner dig. Godt gået. Måske er der alligevel et råd eller to, som en elhaj som dig kan hapse med.";
     }
 
     doc.setFont("helvetica");
@@ -157,7 +157,7 @@ class PdfButton extends Component {
     doc.setFont("helvetica");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize);
-    doc.text("Dit årligeforbrug", desc + 5, this.state.usageY + 3);
+    doc.text("Dit årlige forbrug", desc + 5, this.state.usageY + 3);
 
     doc.setFillColor(this.state.sand);
     doc.rect(desc + 40, this.state.usageY, 3, 3, "F");
@@ -165,7 +165,7 @@ class PdfButton extends Component {
     doc.setFont("helvetica");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize);
-    doc.text("Gennemsnitsforbruget", desc + 45, this.state.usageY + 3);
+    doc.text("Gennemsnitsforbrug", desc + 45, this.state.usageY + 3);
 
     //Bars
     let barMax = this.props.data.result.maxUsage;
@@ -671,7 +671,7 @@ class PdfButton extends Component {
     doc.setFontStyle("bold");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize + 4);
-    doc.text("Gulvvarme", this.state.textRightX, washingY);
+    doc.text("Elgulvvarme", this.state.textRightX, washingY);
 
     //Floor
     let floor = washingY + 10;
@@ -771,7 +771,17 @@ class PdfButton extends Component {
   };
   render() {
     return (
-      <div className="o-pdf-download o-btn o-red" onClick={this.createPdf}>
+      <div
+        className={
+          this.props.bounce === "true"
+            ? "o-pdf-download o-btn o-red pdfBtnBounce"
+            : "o-pdf-download o-btn o-red"
+        }
+        onClick={() => {
+          this.createPdf();
+          this.props.ga.GAevent("pdf");
+        }}
+      >
         Download dit resultat (PDF)
       </div>
     );

@@ -68,8 +68,7 @@
     
     "result": {
         "tipsBad": {
-            "stove": {"title":"Du bruger helt sikkert låget, ikke?", "body":"Når det bobler og koger på dit komfur, så husk lige at lægge låg på gryden. Glemmer du låget, bruger du nemlig tre gange så meget strøm. Så brug låget, og spar på strømmen."},
-            
+            "stove": {"title":"Du bruger helt sikkert låget, ikke?", "body":"Når det bobler og koger på dit komfur, så husk lige at lægge låg på gryden. Glemmer du låget, bruger du nemlig tre gange så meget strøm. Så brug låget, og spar på strømmen."}, 
             "fridge": {"title":"Er der pingviner i dit køleskab?", "body":"Den optimale temperatur i et køleskab er +5°C. Er det koldere, bruger du mere strøm end nødvendigt, og er det varmere, risikerer du, at dine madvarer bliver knap så lækre. Derfor er det vigtigt at holde temperaturen på det rigtige niveau. \n\nOg vidste du for resten, at et indbygget køleskab koster mere på elregningen end et fritstående? Ventilationen omkring et køleskab, der er pakket ind i skabe, er ikke super god, og derfor bruger det mere energi på at komme af med varmen."},
             "tv": {"title":"Pas på dine øjne ikke bliver firkantede", "body":"Du er lidt gladere for fjernsyn end gennemsnittet, og det kan godt koste lidt på din elregning.\n\nMen hvilken type fjernsyn har du? Vidste du, at et plasma-tv suger over dobbelt så meget strøm som et LED-tv. Så tjek energimærket, næste gang du køber et fjernsyn. \n\nOg størrelsen – den har også noget at sige. Jo større skærm, des højere strømforbrug."},
             "tvBoxes": {"title":"Et lille tryk kan spare dig for meget", "body":"Du har flere TV-bokse end gennemsnittet, så for dig kan det betale sig at slukke for din TV-boks på kontakten. Standby-forbruget for en TV-boks er nemlig højt, så sluk på kontakten og spar nemme penge."},
@@ -89,6 +88,9 @@
             "lamps": {"title":"Har du LED-pærer overalt?", "body":"Har du ikke allerede LED-ificeret alle dine pærer, er det bare med at komme i gang med at udskifte dine pærer. En LED-pære holder 10-15 gange længere end en glødepære og bruger mindre strøm."} ,
             "washingmachine": {"title":"Vasker du varmere end nødvendigt?", "body":"Du kan spare strøm super nemt, når du vasker. Dropper du kogevasken og snupper en vask på 60 °C i stedet, bruger du mindre strøm, og tøjet bliver lige så rent."}  ,
             "dryer": {"title":"Fnugger dit filter?", "body":"Vidste du, at det tager længere tid at tørre tøj i en tørretumbler, hvis du glemmer at rense fnugfilteret? Så tjek lige filteret, inden du trykker start – så sparer du både tid og penge på strøm."}  
+        },
+        "tipsEl":{
+            "el":{"title":"Særligt til dig med elvarme", "body":"Du har elvarme og bruger sikkert mere strøm end hjem, der får varmen på andre måder. Men du skal naturligvis ikke snydes for et par gode tips.\n\nHar du elgulvvarme, så er det en fordel, at den er styret af en termostat. Termostaten holder temperaturen konstant og slår varmen fra, hvis rummet varmes op af noget andet, eksempelvis solskin gennem en rude.\n\nNår du lufter ud, så sluk termostaterne, og lav gennemtræk i 5-10 minutter. Så får du frisk luft uden at fyre for gråspurvene."}
         }
     }
 }

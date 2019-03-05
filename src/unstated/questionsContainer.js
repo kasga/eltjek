@@ -145,7 +145,8 @@ class QuestionsContainer extends Container {
     //     kwh: {},
     //     guiding: {},
     //     tipsBad: {},
-    //     tipsGood: {}
+    //     tipsGood: {},
+    //     tipsEl: {}
     //   },
     //   calculate: true
     // };
@@ -166,6 +167,7 @@ class QuestionsContainer extends Container {
     const heating = this.state.heating;
     const tipsBad = this.state.data.tipsBad;
     const tipsGood = this.state.data.tipsGood;
+    const tipsEl = this.state.data.tipsEl;
     const tipsArr = [];
 
     // Kitchen
@@ -330,8 +332,10 @@ class QuestionsContainer extends Container {
       lamps +
       washingmachine +
       dryer +
-      floor +
-      electric;
+      floor;
+    // electric;
+
+    console.log(totalUsage);
 
     // Evaluate the largest usage kwh among the calculations
     let maxUsage = Math.max(
@@ -362,7 +366,9 @@ class QuestionsContainer extends Container {
       tipsArr,
       tipsBad,
       tipsGood,
-      evaluatedUsage
+      tipsEl,
+      evaluatedUsage,
+      heating.electric
     );
 
     // Update the state with the calculated values
@@ -422,7 +428,7 @@ class QuestionsContainer extends Container {
     else return num;
   }
 
-  handleTips(tipsArr, tipsBad, tipsGood, usage) {
+  handleTips(tipsArr, tipsBad, tipsGood, tipsEl, usage, electric) {
     let yourTips = [];
 
     if (usage === "over") {
@@ -465,7 +471,6 @@ class QuestionsContainer extends Container {
         const secondTip = xtraTips[Math.floor(Math.random() * xtraTips.length)];
         yourTips.push(firstTip, secondTip);
       }
-      return yourTips;
     } else {
       let tips = tipsGood;
       const GoodTips = [
@@ -495,9 +500,14 @@ class QuestionsContainer extends Container {
       // Find second tip
       const thirdTip = GoodTips[Math.floor(Math.random() * GoodTips.length)];
       yourTips.push(firstTip, secondTip, thirdTip);
-
-      return yourTips;
     }
+
+    //If the user has Electricity heating, then add the electricty tip
+    if (electric === 1) {
+      yourTips[2] = { tip: tipsEl.el, img: "imgFloor" };
+    }
+
+    return yourTips;
   }
 
   handleUsageResult(usage, guiding, residents) {
@@ -559,16 +569,13 @@ class QuestionsContainer extends Container {
   fetchData() {
     //https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/data
     //data.json
-    fetch(
-      "https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/data",
-      {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        }
+    fetch("data.json", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
       }
-    )
+    })
       .then(response => response.json())
       .then(parsedJSON => this.handleData(parsedJSON))
       .catch(error =>
@@ -586,7 +593,8 @@ class QuestionsContainer extends Container {
           kwh: res.kwh,
           guiding: res.kwh.guiding,
           tipsBad: res.result.tipsBad,
-          tipsGood: res.result.tipsGood
+          tipsGood: res.result.tipsGood,
+          tipsEl: res.result.tipsEl
         }
       },
       () => {

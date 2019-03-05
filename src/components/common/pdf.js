@@ -143,7 +143,7 @@ class PdfButton extends Component {
         fontStyle: "bold",
         fillColor: [142, 205, 200],
         halign: "center",
-        cellPadding: 10,
+        cellPadding: 7,
         fontSize: 14,
         textColor: this.state.black
       }

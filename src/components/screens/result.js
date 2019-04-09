@@ -68,7 +68,11 @@ class Result extends Component {
                       </div>
                       <div className="o-center o-subheading">
                         Ud fra dine svar om dit hjem og dine vaner ser det ud
-                        til, at du bruger mere strøm end andre, der ligner dig.
+                        til, at dit forbug (
+                        {questionsContainer.state.caclulatedUsage.totalUsage}{" "}
+                        kWh) er højere end andre, der ligner dig (
+                        {questionsContainer.state.caclulatedUsage.averageUsage}{" "}
+                        kWh). <br />
                         Med et par små fifs kan vi sammen måske ændre lidt på
                         det?
                       </div>
@@ -80,8 +84,11 @@ class Result extends Component {
                       </div>
                       <div className="o-center o-subheading">
                         Ud fra dine svar om dit hjem og dine vaner ser det ud
-                        til, at du bruger mindre strøm end andre, der ligner
-                        dig. Godt gået. Måske er der alligevel et råd eller to,
+                        til, at dit forbug (
+                        {questionsContainer.state.caclulatedUsage.totalUsage}{" "}
+                        kWh) er højere end andre, der ligner dig (
+                        {questionsContainer.state.caclulatedUsage.averageUsage}{" "}
+                        kWh). Godt gået. Måske er der alligevel et råd eller to,
                         som en elhaj som dig kan hapse med.
                       </div>
                     </div>

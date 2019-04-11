@@ -5,108 +5,40 @@ class QuestionsContainer extends Container {
   constructor(props = {}) {
     super(props);
 
-    // this.state = {
-    //   housing: props.housingType || "",
-    //   residents: {
-    //     adults: undefined,
-    //     teenagers: undefined,
-    //     children: undefined,
-    //     stayAtHome: undefined,
-    //     residentalSize: ""
-    //   },
-    //   kitchen: {
-    //     stove: undefined,
-    //     fridge: undefined,
-    //     dishwasher: undefined,
-    //     dishwasherFrequence: ""
-    //   },
-    //   livingroom: {
-    //     tv: undefined,
-    //     tvBoxes: undefined,
-    //     computers: undefined,
-    //     consols: "",
-    //     consolsFrequence: "",
-    //     lamps: ""
-    //   },
-    //   washing: {
-    //     washingmachine: undefined,
-    //     washingmachineFrequence: "",
-    //     dryer: undefined,
-    //     dryerFrequence: ""
-    //   },
-    //   heating: {
-    //     floor: undefined,
-    //     floorSize: "",
-    //     floorUsageFrequence: "",
-    //     electric: undefined,
-    //     electricUsageFrequence: ""
-    //   },
-    //   caclulatedUsage: {
-    //     totalUsage: undefined,
-    //     averageUsage:undefined,
-    //     kitchen: {
-    //       stove: undefined,
-    //       fridge: undefined,
-    //       dishwasher: undefined,
-    //       dishwasherAverage: undefined
-    //     },
-    //     livingroom: {
-    //       tv: undefined,
-    //       tvBoxes: undefined,
-    //       computers: undefined,
-    //       computersAverage: undefined,
-    //       consols: undefined,
-    //       consolsAverage: undefined,
-    //       lamps: undefined
-    //     },
-    //     washing: {
-    //       washingmachine: undefined,
-    //       washingmachineAverage: undefined,
-    //       dryer: undefined,
-    //       dryerAverage: undefined
-    //     },
-    //     heating: { floor: undefined, electric: undefined }
-    //   },
-    //   result: { usage: "", tips: [], maxUsage: undefined, extras: 0 },
-    //   data: { kwh: {}, guiding: {}, tipsBad: {}, tipsGood: {} },
-    //   calculate: true
-    // };
-
     this.state = {
-      housing: "hus",
+      housing: props.housingType || "",
       residents: {
-        adults: 2,
-        teenagers: 2,
-        children: 2,
-        stayAtHome: 1,
-        residentalSize: "70"
+        adults: undefined,
+        teenagers: undefined,
+        children: undefined,
+        stayAtHome: undefined,
+        residentalSize: ""
       },
       kitchen: {
-        stove: "induction",
-        fridge: "combined",
-        dishwasher: 1,
-        dishwasherFrequence: "10"
+        stove: undefined,
+        fridge: undefined,
+        dishwasher: undefined,
+        dishwasherFrequence: ""
       },
       livingroom: {
-        tv: "2",
-        tvBoxes: "0",
-        computers: "3",
-        consols: 0,
-        consolsFrequence: "0",
-        lamps: "40"
+        tv: undefined,
+        tvBoxes: undefined,
+        computers: undefined,
+        consols: "",
+        consolsFrequence: "",
+        lamps: ""
       },
       washing: {
-        washingmachine: 1,
-        washingmachineFrequence: "14",
-        dryer: 1,
-        dryerFrequence: "14"
+        washingmachine: undefined,
+        washingmachineFrequence: "",
+        dryer: undefined,
+        dryerFrequence: ""
       },
       heating: {
-        floor: 1,
-        floorSize: "80",
-        floorUsageFrequence: "6",
-        electric: 1,
-        electricUsageFrequence: "3"
+        radiators: undefined,
+        radiatorsSize: "",
+        pumps: undefined,
+        pumpsSize: ""
       },
       caclulatedUsage: {
         totalUsage: undefined,
@@ -132,26 +64,92 @@ class QuestionsContainer extends Container {
           dryer: undefined,
           dryerAverage: undefined
         },
-        heating: {
-          floor: undefined,
-          electric: undefined
-        }
+        heating: { radiators: undefined, pumps: undefined }
       },
-      result: {
-        usage: "",
-        tips: [],
-        maxUsage: 0,
-        extras: 0
-      },
-      data: {
-        kwh: {},
-        guiding: {},
-        tipsBad: {},
-        tipsGood: {},
-        tipsEl: {}
-      },
+      result: { usage: "", tips: [], maxUsage: undefined, extras: 0 },
+      data: { kwh: {}, guiding: {}, tipsBad: {}, tipsGood: {} },
       calculate: true
     };
+
+    // this.state = {
+    //   housing: "hus",
+    //   residents: {
+    //     adults: 2,
+    //     teenagers: 2,
+    //     children: 2,
+    //     stayAtHome: 1,
+    //     residentalSize: "70"
+    //   },
+    //   kitchen: {
+    //     stove: "induction",
+    //     fridge: "combined",
+    //     dishwasher: 1,
+    //     dishwasherFrequence: "10"
+    //   },
+    //   livingroom: {
+    //     tv: "2",
+    //     tvBoxes: "0",
+    //     computers: "3",
+    //     consols: 0,
+    //     consolsFrequence: "0",
+    //     lamps: "40"
+    //   },
+    //   washing: {
+    //     washingmachine: 1,
+    //     washingmachineFrequence: "14",
+    //     dryer: 1,
+    //     dryerFrequence: "14"
+    //   },
+    //   heating: {
+    //     radiators: 1,
+    //     radiatorsSize: "30",
+    //     pumps: 1,
+    //     pumpsSize: "50"
+    //   },
+    //   caclulatedUsage: {
+    //     totalUsage: undefined,
+    //     averageUsage: undefined,
+    //     kitchen: {
+    //       stove: undefined,
+    //       fridge: undefined,
+    //       dishwasher: undefined,
+    //       dishwasherAverage: undefined
+    //     },
+    //     livingroom: {
+    //       tv: undefined,
+    //       tvBoxes: undefined,
+    //       computers: undefined,
+    //       computersAverage: undefined,
+    //       consols: undefined,
+    //       consolsAverage: undefined,
+    //       lamps: undefined
+    //     },
+    //     washing: {
+    //       washingmachine: undefined,
+    //       washingmachineAverage: undefined,
+    //       dryer: undefined,
+    //       dryerAverage: undefined
+    //     },
+    //     heating: {
+    //       radiators: undefined,
+    //       pumps: undefined
+    //     }
+    //   },
+    //   result: {
+    //     usage: "",
+    //     tips: [],
+    //     maxUsage: 0,
+    //     extras: 0
+    //   },
+    //   data: {
+    //     kwh: {},
+    //     guiding: {},
+    //     tipsBad: {},
+    //     tipsGood: {},
+    //     tipsEl: {}
+    //   },
+    //   calculate: true
+    // };
 
     this.fetchData();
   }
@@ -258,19 +256,13 @@ class QuestionsContainer extends Container {
     });
 
     //Heating
-    let floor =
-      heating.floor === 1
-        ? Math.round(
-            ((data.heating.floorSize * parseInt(heating.floorSize)) / 12) *
-              parseInt(heating.floorUsageFrequence)
-          )
+    let radiators =
+      heating.radiators === 1
+        ? Math.round(data.heating.radiators * parseInt(heating.radiatorsSize))
         : 0;
-    let electric =
-      heating.electric === 1
-        ? Math.round(
-            data.heating.electricUsageFrequence *
-              parseInt(residents.residentalSize)
-          )
+    let pumps =
+      heating.pumps === 1
+        ? Math.round(data.heating.pumps * parseInt(heating.pumpsSize))
         : 0;
 
     // TOTAL USAGE CALCULATION
@@ -285,8 +277,8 @@ class QuestionsContainer extends Container {
     lamps = this.evalNum(lamps);
     washingmachine = this.evalNum(washingmachine);
     dryer = this.evalNum(dryer);
-    floor = this.evalNum(floor);
-    electric = this.evalNum(electric);
+    radiators = this.evalNum(radiators);
+    pumps = this.evalNum(pumps);
 
     //If there are more than 4 people in the houshold, add extra kwh per teenager
     // let xtraKwh = 0;
@@ -322,6 +314,8 @@ class QuestionsContainer extends Container {
       }
     }
 
+    console.log(radiators, pumps);
+
     let totalUsage =
       xtraKwh +
       atHome +
@@ -334,8 +328,8 @@ class QuestionsContainer extends Container {
       lamps +
       washingmachine +
       dryer +
-      floor;
-    // electric;
+      radiators +
+      pumps;
 
     let averageUsage = this.handleAverageUsage(guiding, residents);
 
@@ -353,8 +347,8 @@ class QuestionsContainer extends Container {
       lamps,
       washingmachine,
       dryer,
-      floor,
-      electric,
+      radiators,
+      pumps,
       dishwasherAverage,
       computersAverage,
       consolsAverage,
@@ -410,8 +404,8 @@ class QuestionsContainer extends Container {
           },
           heating: {
             ...prevState.caclulatedUsage.heating,
-            floor: floor,
-            electric: electric
+            radiators: radiators,
+            pumps: pumps
           }
         },
         result: {
@@ -603,13 +597,16 @@ class QuestionsContainer extends Container {
   fetchData() {
     //https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/data
     //data.json
-    fetch("data.json", {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
+    fetch(
+      "https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/data",
+      {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        }
       }
-    })
+    )
       .then(response => response.json())
       .then(parsedJSON => this.handleData(parsedJSON))
       .catch(error =>

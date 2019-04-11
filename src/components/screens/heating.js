@@ -17,17 +17,17 @@ class Heating extends Component {
   validateFields = fields => {
     let valid = true;
 
-    if (fields["floor"] === undefined || fields["electric"] === undefined) {
+    if (fields["radiators"] === undefined || fields["pumps"] === undefined) {
       valid = false;
     }
 
-    if (fields["floor"] === 1 && fields["floorUsageFrequence"] === "") {
+    if (fields["radiators"] === 1 && fields["radiatorsSize"] === "") {
       valid = false;
     }
 
-    // if (fields["electric"] === 1 && fields["electricUsageFrequence"] === "") {
-    //   valid = false;
-    // }
+    if (fields["pumps"] === 1 && fields["pumpsSize"] === "") {
+      valid = false;
+    }
 
     return valid;
   };
@@ -46,14 +46,14 @@ class Heating extends Component {
                 <div
                   className={
                     "o-question-row" +
-                    (questionsContainer.state.heating.floor === undefined &&
+                    (questionsContainer.state.heating.radiators === undefined &&
                     this.state.allFields === false
                       ? " o-invalid"
                       : "")
                   }
                 >
                   <div className="o-question-label">
-                    Har du elgulvvarme i et eller flere rum i dit hjem?
+                    Har du en eller flere elradiatorer i dit hjem?
                   </div>
                   <div className="o-radio-container">
                     <label className="o-radio">
@@ -61,122 +61,13 @@ class Heating extends Component {
                       <input
                         type="radio"
                         name="radio"
-                        checked={questionsContainer.state.heating.floor === 1}
-                        onChange={() =>
-                          questionsContainer.updateRadio("heating", "floor", 1)
-                        }
-                      />
-                      <span className="checkmark" />
-                    </label>
-                    <label className="o-radio">
-                      Nej
-                      <input
-                        type="radio"
-                        name="radio"
-                        checked={questionsContainer.state.heating.floor === 0}
-                        onChange={() =>
-                          questionsContainer.updateRadio("heating", "floor", 0)
-                        }
-                      />
-                      <span className="checkmark" />
-                    </label>
-                  </div>
-                </div>
-
-                {/* QUESTION */}
-                <div
-                  className={
-                    "o-question-row" +
-                    (questionsContainer.state.heating.floorSize === "" &&
-                    this.state.allFields === false
-                      ? " o-invalid"
-                      : "") +
-                    (questionsContainer.state.heating.floor === 1
-                      ? ""
-                      : " o-contracted")
-                  }
-                >
-                  <div className="o-question-label">
-                    Hvor mange m<sup>2</sup> elgulvvarme har du i dit hjem?
-                  </div>
-                  <div className="o-input-container">
-                    <input
-                      className="o-input"
-                      type="text"
-                      placeholder=""
-                      value={questionsContainer.state.heating.floorSize}
-                      onChange={e => {
-                        questionsContainer.updateNumber(
-                          "heating",
-                          "floorSize",
-                          e.target.value
-                        );
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* QUESTION */}
-                <div
-                  className={
-                    "o-question-row" +
-                    (questionsContainer.state.heating.floorUsageFrequence ===
-                      "" && this.state.allFields === false
-                      ? " o-invalid"
-                      : "") +
-                    (questionsContainer.state.heating.floor === 1
-                      ? ""
-                      : " o-contracted")
-                  }
-                >
-                  <div className="o-question-label">
-                    Hvor mange måneder om året er din elgulvvarme tændt?
-                  </div>
-                  <div className="o-input-container">
-                    <input
-                      className="o-input"
-                      type="text"
-                      placeholder=""
-                      value={
-                        questionsContainer.state.heating.floorUsageFrequence
-                      }
-                      onChange={e => {
-                        questionsContainer.updateNumber(
-                          "heating",
-                          "floorUsageFrequence",
-                          e.target.value
-                        );
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* QUESTION */}
-                <div
-                  className={
-                    "o-question-row" +
-                    (questionsContainer.state.heating.electric === undefined &&
-                    this.state.allFields === false
-                      ? " o-invalid"
-                      : "")
-                  }
-                >
-                  <div className="o-question-label">
-                    Har du elvarme i øvrigt?
-                  </div>
-                  <div className="o-radio-container">
-                    <label className="o-radio">
-                      Ja
-                      <input
-                        type="radio"
-                        name="radio2"
                         checked={
-                          questionsContainer.state.heating.electric === 1
+                          questionsContainer.state.heating.radiators === 1
                         }
                         onChange={() =>
                           questionsContainer.updateRadio(
                             "heating",
-                            "electric",
+                            "radiators",
                             1
                           )
                         }
@@ -187,14 +78,14 @@ class Heating extends Component {
                       Nej
                       <input
                         type="radio"
-                        name="radio2"
+                        name="radio"
                         checked={
-                          questionsContainer.state.heating.electric === 0
+                          questionsContainer.state.heating.radiators === 0
                         }
                         onChange={() =>
                           questionsContainer.updateRadio(
                             "heating",
-                            "electric",
+                            "radiators",
                             0
                           )
                         }
@@ -204,40 +95,112 @@ class Heating extends Component {
                   </div>
                 </div>
 
-                {/* QUESTION
+                {/* QUESTION */}
                 <div
                   className={
                     "o-question-row" +
-                    (questionsContainer.state.heating.electricUsageFrequence ===
-                      "" && this.state.allFields === false
+                    (questionsContainer.state.heating.radiatorsSize === "" &&
+                    this.state.allFields === false
                       ? " o-invalid"
                       : "") +
-                    (questionsContainer.state.heating.electric === 1
+                    (questionsContainer.state.heating.radiators === 1
                       ? ""
                       : " o-contracted")
                   }
                 >
                   <div className="o-question-label">
-                    Hvor mange måneder om året har du tændt for din elvarme?
+                    Hvor mange m<sup>2</sup> opvarmer de?
                   </div>
                   <div className="o-input-container">
                     <input
                       className="o-input"
                       type="text"
                       placeholder=""
-                      value={
-                        questionsContainer.state.heating.electricUsageFrequence
-                      }
+                      value={questionsContainer.state.heating.radiatorsSize}
                       onChange={e => {
                         questionsContainer.updateNumber(
                           "heating",
-                          "electricUsageFrequence",
+                          "radiatorsSize",
                           e.target.value
                         );
                       }}
                     />
                   </div>
-                </div> */}
+                </div>
+
+                {/* QUESTION */}
+                <div
+                  className={
+                    "o-question-row" +
+                    (questionsContainer.state.heating.pumps === undefined &&
+                    this.state.allFields === false
+                      ? " o-invalid"
+                      : "")
+                  }
+                >
+                  <div className="o-question-label">
+                    Har du en eller flere varmepumper i dit hjem?
+                  </div>
+                  <div className="o-radio-container">
+                    <label className="o-radio">
+                      Ja
+                      <input
+                        type="radio"
+                        name="radio2"
+                        checked={questionsContainer.state.heating.pumps === 1}
+                        onChange={() =>
+                          questionsContainer.updateRadio("heating", "pumps", 1)
+                        }
+                      />
+                      <span className="checkmark" />
+                    </label>
+                    <label className="o-radio">
+                      Nej
+                      <input
+                        type="radio"
+                        name="radio2"
+                        checked={questionsContainer.state.heating.pumps === 0}
+                        onChange={() =>
+                          questionsContainer.updateRadio("heating", "pumps", 0)
+                        }
+                      />
+                      <span className="checkmark" />
+                    </label>
+                  </div>
+                </div>
+
+                {/* QUESTION */}
+                <div
+                  className={
+                    "o-question-row" +
+                    (questionsContainer.state.heating.pumpsSize === "" &&
+                    this.state.allFields === false
+                      ? " o-invalid"
+                      : "") +
+                    (questionsContainer.state.heating.pumps === 1
+                      ? ""
+                      : " o-contracted")
+                  }
+                >
+                  <div className="o-question-label">
+                    Hvor mange m<sup>2</sup> opvarmer de?
+                  </div>
+                  <div className="o-input-container">
+                    <input
+                      className="o-input"
+                      type="text"
+                      placeholder=""
+                      value={questionsContainer.state.heating.pumpsSize}
+                      onChange={e => {
+                        questionsContainer.updateNumber(
+                          "heating",
+                          "pumpsSize",
+                          e.target.value
+                        );
+                      }}
+                    />
+                  </div>
+                </div>
 
                 {/* Bottom navigation */}
                 <div className="o-bottom-nav">

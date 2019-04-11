@@ -16,7 +16,7 @@ class Bars extends Component {
 
   calculateBarWidth(max, bar) {
     if (bar === 0) {
-      return "5%";
+      return "0%";
     } else {
       return (100 * bar) / max + "%";
     }

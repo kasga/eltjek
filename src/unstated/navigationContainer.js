@@ -9,8 +9,8 @@ class NavigationContainer extends Container {
     super(props);
     this.state = {
       housingType: props.housingType || "",
-      currentPage: props.housingType ? 5 : 0,
-      maxPage: props.housingType ? 5 : 0,
+      currentPage: props.housingType ? 1 : 0,
+      maxPage: props.housingType ? 1 : 0,
       pages: [
         { label: "Hjem", route: "/start" },
         { label: "Husstand", route: "/beboere" },

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { ReactComponent as ImgKitchen } from "./../../images/kitchen.svg";
 import { ReactComponent as ImgLivingroom } from "./../../images/livingroom.svg";
 import { ReactComponent as ImgWashing } from "./../../images/washing.svg";
-import { ReactComponent as ImgFloor } from "./../../images/floor.svg";
+import { ReactComponent as ImgFloor } from "./../../images/heating.svg";
 
 class Tip extends Component {
   constructor(props) {

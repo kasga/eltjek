@@ -35,8 +35,8 @@
         },
 
         "heating": {
-            "floorSize": 100,
-            "electricUsageFrequence": 100
+            "radiators": 100,
+            "pumps": 35
         },
 
         "extras":{

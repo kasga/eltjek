@@ -12,7 +12,7 @@ import PdfButton from "../common/pdf";
 import { ReactComponent as ImgKitchen } from "./../../images/kitchen.svg";
 import { ReactComponent as ImgLivingroom } from "./../../images/livingroom.svg";
 import { ReactComponent as ImgWashing } from "./../../images/washing.svg";
-import { ReactComponent as ImgFloor } from "./../../images/floor.svg";
+import { ReactComponent as ImgHeating } from "./../../images/heating.svg";
 
 class Result extends Component {
   constructor(props) {
@@ -86,7 +86,7 @@ class Result extends Component {
                         Ud fra dine svar om dit hjem og dine vaner ser det ud
                         til, at dit forbug (
                         {questionsContainer.state.caclulatedUsage.totalUsage}{" "}
-                        kWh) er højere end andre, der ligner dig (
+                        kWh) er lavere end andre, der ligner dig (
                         {questionsContainer.state.caclulatedUsage.averageUsage}{" "}
                         kWh). Godt gået. Måske er der alligevel et råd eller to,
                         som en elhaj som dig kan hapse med.
@@ -312,34 +312,34 @@ class Result extends Component {
                       </div>
                     </div>
                     <div className="o-comparison-box">
-                      <ImgFloor height="60" />
-                      <div className="o-label">Elgulvvarme</div>
+                      <ImgHeating height="60" />
+                      <div className="o-label">Elvarme</div>
                       <div className="o-comparison-bars">
                         {/* Bar container */}
                         <Bars
                           you={
                             questionsContainer.state.caclulatedUsage.heating
-                              .floor
+                              .radiators
                           }
                           average={
                             questionsContainer.state.caclulatedUsage.heating
-                              .floor
+                              .radiators
                           }
                           max={questionsContainer.state.result.maxUsage}
-                          label="Elgulvvarme"
+                          label="Elradiator(er)"
                           animate={this.state.animateBarsPart2}
                         />
                         <Bars
                           you={
                             questionsContainer.state.caclulatedUsage.heating
-                              .electric
+                              .pumps
                           }
                           average={
                             questionsContainer.state.caclulatedUsage.heating
-                              .electric
+                              .pumps
                           }
                           max={questionsContainer.state.result.maxUsage}
-                          label="Elvarme"
+                          label="Varmepumpe(r)"
                           animate={this.state.animateBarsPart2}
                         />
                       </div>

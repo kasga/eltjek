@@ -671,36 +671,36 @@ class PdfButton extends Component {
     doc.setFontStyle("bold");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize + 4);
-    doc.text("Elgulvvarme", this.state.textRightX, washingY);
+    doc.text("Elvarme", this.state.textRightX, washingY);
 
     //Floor
-    let floor = washingY + 10;
+    let radiators = washingY + 10;
     doc.setFont("helvetica");
     doc.setFontStyle("bold");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize);
-    doc.text("Vaskemaskine", this.state.textRightX, floor);
+    doc.text("Elradiator(er)", this.state.textRightX, radiators);
 
     doc.setFont("helvetica");
     doc.setFontStyle("normal");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize);
     doc.text(
-      this.props.data.caclulatedUsage.heating.floor +
+      this.props.data.caclulatedUsage.heating.radiators +
         " / " +
-        this.props.data.caclulatedUsage.heating.floor +
+        this.props.data.caclulatedUsage.heating.radiators +
         " kWh.",
       this.state.textRightX,
-      floor + 4
+      radiators + 4
     );
 
     doc.setFillColor(this.state.sand);
     doc.roundedRect(
       this.state.barsRightX,
-      floor + 1,
-      this.props.data.caclulatedUsage.heating.floor === 0
+      radiators + 1,
+      this.props.data.caclulatedUsage.heating.radiators === 0
         ? 3
-        : rel * this.props.data.caclulatedUsage.heating.floor + 2,
+        : rel * this.props.data.caclulatedUsage.heating.radiators + 2,
       barHeight,
       1.5,
       1.5,
@@ -710,10 +710,10 @@ class PdfButton extends Component {
     doc.setFillColor(this.state.blue);
     doc.roundedRect(
       this.state.barsRightX,
-      floor - 1,
-      this.props.data.caclulatedUsage.heating.floor === 0
+      radiators - 1,
+      this.props.data.caclulatedUsage.heating.radiators === 0
         ? 3
-        : rel * this.props.data.caclulatedUsage.heating.floor + 2,
+        : rel * this.props.data.caclulatedUsage.heating.radiators + 2,
       barHeight,
       1.5,
       1.5,
@@ -721,33 +721,33 @@ class PdfButton extends Component {
     );
 
     //Electric
-    let electric = floor + this.state.barsSpacing;
+    let pumps = radiators + this.state.barsSpacing;
     doc.setFont("helvetica");
     doc.setFontStyle("bold");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize);
-    doc.text("Elvarme", this.state.textRightX, electric);
+    doc.text("Varmepumpe(r)", this.state.textRightX, pumps);
 
     doc.setFont("helvetica");
     doc.setFontStyle("normal");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize);
     doc.text(
-      this.props.data.caclulatedUsage.heating.electric +
+      this.props.data.caclulatedUsage.heating.pumps +
         " / " +
-        this.props.data.caclulatedUsage.heating.electric +
+        this.props.data.caclulatedUsage.heating.pumps +
         " kWh.",
       this.state.textRightX,
-      electric + 4
+      pumps + 4
     );
 
     doc.setFillColor(this.state.sand);
     doc.roundedRect(
       this.state.barsRightX,
-      electric + 1,
-      this.props.data.caclulatedUsage.heating.electric === 0
+      pumps + 1,
+      this.props.data.caclulatedUsage.heating.pumps === 0
         ? 3
-        : rel * this.props.data.caclulatedUsage.heating.electric + 2,
+        : rel * this.props.data.caclulatedUsage.heating.pumps + 2,
       barHeight,
       1.5,
       1.5,
@@ -757,10 +757,10 @@ class PdfButton extends Component {
     doc.setFillColor(this.state.blue);
     doc.roundedRect(
       this.state.barsRightX,
-      electric - 1,
-      this.props.data.caclulatedUsage.heating.electric === 0
+      pumps - 1,
+      this.props.data.caclulatedUsage.heating.pumps === 0
         ? 3
-        : rel * this.props.data.caclulatedUsage.heating.electric + 2,
+        : rel * this.props.data.caclulatedUsage.heating.pumps + 2,
       barHeight,
       1.5,
       1.5,

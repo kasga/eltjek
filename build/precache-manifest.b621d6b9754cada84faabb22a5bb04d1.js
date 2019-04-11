@@ -12,27 +12,27 @@ self.__precacheManifest = [
     "url": "./static/media/kitchen.b38bc1bf.svg"
   },
   {
-    "revision": "fbb2a34171bf3055a13251e94c8a6742",
-    "url": "./static/media/floor.fbb2a341.svg"
+    "revision": "974bf0864a8eab3ce084f4d5489e3920",
+    "url": "./static/media/heating.974bf086.svg"
   },
   {
     "revision": "9eb600ee07a27cdad64f",
     "url": "./static/js/runtime~main.9eb600ee.js"
   },
   {
-    "revision": "57d794f32ef3f6b9d11e",
-    "url": "./static/js/main.57d794f3.chunk.js"
+    "revision": "36015a62855029daf186",
+    "url": "./static/js/main.36015a62.chunk.js"
   },
   {
     "revision": "c4d803a9cc0c9e9a90c6",
     "url": "./static/js/2.c4d803a9.chunk.js"
   },
   {
-    "revision": "57d794f32ef3f6b9d11e",
-    "url": "./static/css/main.585e3abb.chunk.css"
+    "revision": "36015a62855029daf186",
+    "url": "./static/css/main.611c2537.chunk.css"
   },
   {
-    "revision": "cceb5f08228af50047ee5ac8effd994f",
+    "revision": "795049261069edd7eedea18ccd6da329",
     "url": "./index.html"
   }
 ];

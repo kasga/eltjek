@@ -202,6 +202,46 @@ class Heating extends Component {
                   </div>
                 </div>
 
+                {/* QUESTION */}
+                <div
+                  className={
+                    "o-question-row" +
+                    (questionsContainer.state.heating.myUsage === "" &&
+                    this.state.allFields === false
+                      ? " o-invalid"
+                      : "") +
+                    (questionsContainer.state.heating.pumps === 1 ||
+                    questionsContainer.state.heating.radiators === 1
+                      ? ""
+                      : " o-hide")
+                  }
+                >
+                  <div className="o-question-label">
+                    Kender du dit årlige elforbrug (kWh)?
+                    <br />
+                    <span className="o-question-label-info">
+                      (Hvis du ved, hvor meget strøm du bruger i alt, kan vi
+                      regne ud, om du bruger meget eller lidt på elvarme. Ved du
+                      det ikke, kan vi desværre ikke regne det ud. )
+                    </span>
+                  </div>
+                  <div className="o-input-container">
+                    <input
+                      className="o-input"
+                      type="text"
+                      placeholder="Samlet årligt elforbrug i KWh"
+                      value={questionsContainer.state.heating.myUsage}
+                      onChange={e => {
+                        questionsContainer.updateNumber(
+                          "heating",
+                          "myUsage",
+                          e.target.value
+                        );
+                      }}
+                    />
+                  </div>
+                </div>
+
                 {/* Bottom navigation */}
                 <div className="o-bottom-nav">
                   <div

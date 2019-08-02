@@ -47,6 +47,85 @@ class Result extends Component {
     this.setState({ questionsCont: c });
   }
 
+  getSubtitle(questionsContainer) {
+    let subtitle;
+
+    if (
+      questionsContainer.state.result.usage === "over" &&
+      questionsContainer.state.caclulatedUsage.heating.myUsage > 0
+    ) {
+      subtitle = (
+        <div>
+          <div className="o-headline1 o-center">
+            Vups! Du ligger vist i den høje ende
+          </div>
+          <div className="o-center o-subheading">
+            Ud fra dine svar om dit hjem og dine vaner ser det ud til, at dit
+            forbug ({questionsContainer.state.caclulatedUsage.totalUsage} kWh)
+            er højere end andre, der ligner dig (
+            {questionsContainer.state.caclulatedUsage.averageUsage} kWh). Med et
+            par små fifs kan vi sammen måske ændre lidt på det?
+          </div>
+        </div>
+      );
+    } else if (
+      questionsContainer.state.result.usage === "under" &&
+      questionsContainer.state.caclulatedUsage.heating.myUsage > 0
+    ) {
+      subtitle = (
+        <div>
+          <div className="o-headline1 o-center">
+            Sådan! Du er en haj til det med strøm
+          </div>
+          <div className="o-center o-subheading">
+            Ud fra dine svar om dit hjem og dine vaner ser det ud til, at dit
+            forbug ({questionsContainer.state.caclulatedUsage.totalUsage} kWh)
+            er lavere end andre, der ligner dig (
+            {questionsContainer.state.caclulatedUsage.averageUsage} kWh). Godt
+            gået. Måske er der alligevel et råd eller to, som en elhaj som dig
+            kan hapse med.
+          </div>
+        </div>
+      );
+    } else if (questionsContainer.state.result.usage === "over") {
+      subtitle = (
+        <div>
+          <div className="o-headline1 o-center">
+            Vups! Du ligger vist i den høje ende
+          </div>
+          <div className="o-center o-subheading">
+            Vi mangler dit samlede forbrug og kan derfor desværre ikke regne ud,
+            om du bruger meget eller lidt på opvarmning. Men ud fra dine svar om
+            dit hjem og dine vaner ser det ud til, at dit forbrug (
+            {questionsContainer.state.caclulatedUsage.totalUsage} kWh) er højere
+            end andre, der ligner dig (
+            {questionsContainer.state.caclulatedUsage.averageUsage} kWh). Med et
+            par små fifs kan vi sammen måske ændre lidt på det?
+          </div>
+        </div>
+      );
+    } else {
+      subtitle = (
+        <div>
+          <div className="o-headline1 o-center">
+            Sådan! Du er en haj til det med strøm
+          </div>
+          <div className="o-center o-subheading">
+            Vi mangler dit samlede forbrug og kan derfor desværre ikke regne ud,
+            om du bruger meget eller lidt på opvarmning. Men ud fra dine svar om
+            dit hjem og dine vaner ser det ud til, at dit forbrug (
+            {questionsContainer.state.caclulatedUsage.totalUsage} kWh) er lavere
+            end andre, der ligner dig (
+            {questionsContainer.state.caclulatedUsage.averageUsage} kWh). Godt
+            gået. Måske er der alligevel et råd eller to, som en elhaj som dig
+            kan hapse med.
+          </div>
+        </div>
+      );
+    }
+    return subtitle;
+  }
+
   render() {
     return (
       <Subscribe to={[QuestionsContainer, NavigationContainer]}>
@@ -61,38 +140,7 @@ class Result extends Component {
               <div className="o-content-container">
                 {/* CONCLUSSION */}
                 <div className="o-conclusion">
-                  {questionsContainer.state.result.usage === "over" ? (
-                    <div>
-                      <div className="o-headline1 o-center">
-                        Vups! Du ligger vist i den høje ende
-                      </div>
-                      <div className="o-center o-subheading">
-                        Ud fra dine svar om dit hjem og dine vaner ser det ud
-                        til, at dit forbug (
-                        {questionsContainer.state.caclulatedUsage.totalUsage}{" "}
-                        kWh) er højere end andre, der ligner dig (
-                        {questionsContainer.state.caclulatedUsage.averageUsage}{" "}
-                        kWh). <br />
-                        Med et par små fifs kan vi sammen måske ændre lidt på
-                        det?
-                      </div>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className="o-headline1 o-center">
-                        Sådan! Du er en haj til det med strøm
-                      </div>
-                      <div className="o-center o-subheading">
-                        Ud fra dine svar om dit hjem og dine vaner ser det ud
-                        til, at dit forbug (
-                        {questionsContainer.state.caclulatedUsage.totalUsage}{" "}
-                        kWh) er lavere end andre, der ligner dig (
-                        {questionsContainer.state.caclulatedUsage.averageUsage}{" "}
-                        kWh). Godt gået. Måske er der alligevel et råd eller to,
-                        som en elhaj som dig kan hapse med.
-                      </div>
-                    </div>
-                  )}
+                  {this.getSubtitle(questionsContainer)}
                 </div>
                 {/* TIPS */}
 
@@ -319,17 +367,17 @@ class Result extends Component {
                         <Bars
                           you={
                             questionsContainer.state.caclulatedUsage.heating
-                              .radiators
+                              .electricHeating
                           }
                           average={
                             questionsContainer.state.caclulatedUsage.heating
-                              .radiators
+                              .electricHeatingAverage
                           }
                           max={questionsContainer.state.result.maxUsage}
-                          label="Elradiator(er)"
+                          label="Samlet elvarme"
                           animate={this.state.animateBarsPart2}
                         />
-                        <Bars
+                        {/* <Bars
                           you={
                             questionsContainer.state.caclulatedUsage.heating
                               .pumps
@@ -341,7 +389,7 @@ class Result extends Component {
                           max={questionsContainer.state.result.maxUsage}
                           label="Varmepumpe(r)"
                           animate={this.state.animateBarsPart2}
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>

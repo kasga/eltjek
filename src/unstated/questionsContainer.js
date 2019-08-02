@@ -38,7 +38,8 @@ class QuestionsContainer extends Container {
         radiators: undefined,
         radiatorsSize: "",
         pumps: undefined,
-        pumpsSize: ""
+        pumpsSize: "",
+        myUsage: ""
       },
       caclulatedUsage: {
         totalUsage: undefined,
@@ -64,7 +65,12 @@ class QuestionsContainer extends Container {
           dryer: undefined,
           dryerAverage: undefined
         },
-        heating: { radiators: undefined, pumps: undefined }
+        heating: {
+          radiators: undefined,
+          pumps: undefined,
+          electricHeating: "",
+          electricHeatingAverage: ""
+        }
       },
       result: { usage: "", tips: [], maxUsage: undefined, extras: 0 },
       data: { kwh: {}, guiding: {}, tipsBad: {}, tipsGood: {} },
@@ -76,35 +82,37 @@ class QuestionsContainer extends Container {
     //   residents: {
     //     adults: 2,
     //     teenagers: 2,
-    //     children: 2,
-    //     stayAtHome: 1,
-    //     residentalSize: "70"
+    //     children: 0,
+    //     stayAtHome: 0,
+    //     residentalSize: "150"
     //   },
     //   kitchen: {
     //     stove: "induction",
     //     fridge: "combined",
     //     dishwasher: 1,
-    //     dishwasherFrequence: "10"
+    //     dishwasherFrequence: "7"
     //   },
     //   livingroom: {
     //     tv: "2",
-    //     tvBoxes: "0",
-    //     computers: "3",
+    //     tvBoxes: "2",
+    //     computers: "0",
     //     consols: 0,
     //     consolsFrequence: "0",
     //     lamps: "40"
     //   },
     //   washing: {
     //     washingmachine: 1,
-    //     washingmachineFrequence: "14",
+    //     washingmachineFrequence: "7",
     //     dryer: 1,
-    //     dryerFrequence: "14"
+    //     dryerFrequence: "7"
     //   },
     //   heating: {
     //     radiators: 1,
-    //     radiatorsSize: "30",
+    //     radiatorsSize: "100",
     //     pumps: 1,
-    //     pumpsSize: "50"
+    //     pumpsSize: "50",
+    //     myUsage: "18000",
+    //     electricHeating: ""
     //   },
     //   caclulatedUsage: {
     //     totalUsage: undefined,
@@ -132,7 +140,9 @@ class QuestionsContainer extends Container {
     //     },
     //     heating: {
     //       radiators: undefined,
-    //       pumps: undefined
+    //       pumps: undefined,
+    //       electricHeating: undefined,
+    //       electricHeatingAverage: undefined
     //     }
     //   },
     //   result: {
@@ -264,6 +274,7 @@ class QuestionsContainer extends Container {
       heating.pumps === 1
         ? Math.round(data.heating.pumps * parseInt(heating.pumpsSize))
         : 0;
+    let myUsage = Math.round(parseInt(heating.myUsage));
 
     // TOTAL USAGE CALCULATION
     let atHome = residents.stayAtHome * data.extras.athome;
@@ -314,7 +325,18 @@ class QuestionsContainer extends Container {
       }
     }
 
-    console.log(radiators, pumps);
+    let totalUsageNoHeating =
+      xtraKwh +
+      atHome +
+      stove +
+      fridge +
+      dishwasher +
+      tv +
+      tvBoxes +
+      computers +
+      lamps +
+      washingmachine +
+      dryer;
 
     let totalUsage =
       xtraKwh +
@@ -331,10 +353,25 @@ class QuestionsContainer extends Container {
       radiators +
       pumps;
 
-    let averageUsage = this.handleAverageUsage(guiding, residents);
+    //Calculate the expected heating usage
+    let electricHeating = radiators + pumps;
+    let electricHeatingAverage = electricHeating;
+    let averageUsageNoHeating = this.handleAverageUsage(guiding, residents);
+    let averageUsage = averageUsageNoHeating + electricHeating;
+    let usageBenchmark = averageUsageNoHeating;
+    let usagePredicted = totalUsageNoHeating;
+    let myPredictedUsage = usagePredicted - usageBenchmark;
 
-    // console.log(totalUsage);
-    // console.log(averageUsage, xtraKwh);
+    if (myUsage > 0) {
+      let realHeatingUsage = myUsage - usagePredicted;
+      // let heatingStatus = realHeatingUsage - electricHeating;
+
+      //IF THE USER SETS THE YEARLY USAGE, THE TOTAL ESTIMATED USAGE IS SET TO THIS VALUE
+      totalUsage = myUsage;
+
+      //IF THE USER SETS THE YEARLY USAGE, THE ELECTRIC HEATING IS CALCULATED
+      electricHeating = realHeatingUsage;
+    }
 
     // Evaluate the largest usage kwh among the calculations
     let maxUsage = Math.max(
@@ -347,8 +384,8 @@ class QuestionsContainer extends Container {
       lamps,
       washingmachine,
       dryer,
-      radiators,
-      pumps,
+      electricHeating,
+      electricHeatingAverage,
       dishwasherAverage,
       computersAverage,
       consolsAverage,
@@ -357,8 +394,21 @@ class QuestionsContainer extends Container {
       dryerAverage
     );
 
+    console.log("--------------------------------------------------");
+    console.log("Indtastet forbrug uden opvarmning", usagePredicted);
+    console.log("Benchmark forbrug uden opvarmning", usageBenchmark);
+    console.log("Over-/underforbrug", myPredictedUsage);
+
+    console.log("Varme forbrug benchmark", electricHeating);
+    console.log("Indtastet årsforbrug", myUsage);
+
     // Evaluate usage, is it higher og lower than out recommendation
-    let evaluatedUsage = this.handleUsageResult(totalUsage, guiding, residents);
+    let evaluatedUsage = this.handleUsageResult(
+      totalUsage,
+      guiding,
+      residents,
+      electricHeatingAverage
+    );
 
     // Evaluate which tips to display
     let evaluateTips = this.handleTips(
@@ -405,7 +455,10 @@ class QuestionsContainer extends Container {
           heating: {
             ...prevState.caclulatedUsage.heating,
             radiators: radiators,
-            pumps: pumps
+            pumps: pumps,
+            myUsage: myUsage,
+            electricHeating: electricHeating,
+            electricHeatingAverage: electricHeatingAverage
           }
         },
         result: {
@@ -538,7 +591,7 @@ class QuestionsContainer extends Container {
     return guide;
   }
 
-  handleUsageResult(usage, guiding, residents) {
+  handleUsageResult(usage, guiding, residents, electricHeating) {
     let guide;
     let usageState;
     let numOfPeople =
@@ -560,6 +613,8 @@ class QuestionsContainer extends Container {
       }
     }
 
+    guide += electricHeating;
+    console.log(usage, guide);
     if (usage < guide) {
       usageState = "under";
     } else {
@@ -573,6 +628,23 @@ class QuestionsContainer extends Container {
 
   updateRadio = (index, key, value) => {
     this.setState({ [index]: { ...this.state[index], [key]: value } });
+
+    if (
+      (key === "pumps" && value === 0 && this.state.heating.radiators === 0) ||
+      (key === "radiators" && value === 0 && this.state.heating.pumps === 0)
+    ) {
+      this.setState(
+        prevState => ({
+          heating: {
+            ...prevState.heating,
+            myUsage: "0"
+          }
+        }),
+        () => {
+          console.log("updated");
+        }
+      );
+    }
   };
 
   updateNumber = (index, key, value) => {
@@ -597,16 +669,13 @@ class QuestionsContainer extends Container {
   fetchData() {
     //https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/data
     //data.json
-    fetch(
-      "https://orsted.dk/-/media/WWW/Assets/DCS/projects/el-tjek/static/media/data",
-      {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        }
+    fetch("data.json", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
       }
-    )
+    })
       .then(response => response.json())
       .then(parsedJSON => this.handleData(parsedJSON))
       .catch(error =>

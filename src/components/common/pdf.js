@@ -46,14 +46,44 @@ class PdfButton extends Component {
     // Header
     let title;
     let subtitleTxt;
-    if (this.props.data.result.usage === "over") {
+    if (
+      this.props.data.result.usage === "over" &&
+      this.props.data.caclulatedUsage.heating.myUsage > 0
+    ) {
       title = "Vups! Du ligger vist i den høje ende";
       subtitleTxt =
-        "Ud fra dine svar om dit hjem og dine vaner ser det ud til, at du bruger mere strøm end andre, der ligner dig. Med et par små fifs kan vi sammen måske ændre lidt på det?";
+        "Ud fra dine svar om dit hjem og dine vaner ser det ud til, at dit forbug (" +
+        this.props.data.caclulatedUsage.totalUsage +
+        " kWh) kWh) er højere end andre, der ligner dig(" +
+        this.props.data.caclulatedUsage.averageUsage +
+        " kWh). Med et par små fifs kan vi sammen måske ændre lidt på det ?";
+    } else if (
+      this.props.data.result.usage === "under" &&
+      this.props.data.caclulatedUsage.heating.myUsage > 0
+    ) {
+      title = "Sådan! Du er en haj til det med strøm";
+      subtitleTxt =
+        "Ud fra dine svar om dit hjem og dine vaner ser det ud til, at dit forbug(" +
+        this.props.data.caclulatedUsage.totalUsage +
+        " kWh) er lavere end andre, der ligner dig (" +
+        this.props.data.caclulatedUsage.averageUsage +
+        " kWh). Godt gået. Måske er der alligevel et råd eller to, som en elhaj som dig kan hapse med.";
+    } else if (this.props.data.result.usage === "over") {
+      title = "Vups! Du ligger vist i den høje ende";
+      subtitleTxt =
+        "Vi mangler dit samlede forbrug og kan derfor desværre ikke regne ud, om du bruger meget eller lidt på opvarmning.Men ud fra dine svar om dit hjem, dine vaner og dit forbrug ser det ud til, at dit forbrug (" +
+        this.props.data.caclulatedUsage.totalUsage +
+        " kWh) er højere end andre, der ligner dig (" +
+        this.props.data.caclulatedUsage.averageUsage +
+        " kWh). Med et par små fifs kan vi sammen måske ændre lidt på det ?";
     } else {
       title = "Sådan! Du er en haj til det med strøm";
       subtitleTxt =
-        "Ud fra dine svar om dit hjem og dine vaner ser det ud til, at du bruger mindre strøm end andre, der ligner dig. Godt gået. Måske er der alligevel et råd eller to, som en elhaj som dig kan hapse med.";
+        "Vi mangler dit samlede forbrug og kan derfor desværre ikke regne ud, om du bruger meget eller lidt på opvarmning. Men ud fra dine svar om dit hjem og dine vaner ser det ud til, at dit forbrug(" +
+        this.props.data.caclulatedUsage.totalUsage +
+        " kWh) er lavere end andre, der ligner dig (" +
+        this.props.data.caclulatedUsage.averageUsage +
+        " kWh). Godt gået. Måske er der alligevel et råd eller to, som en elhaj som dig kan hapse med.";
     }
 
     doc.setFont("helvetica");
@@ -74,10 +104,10 @@ class PdfButton extends Component {
       .setFont("helvetica")
       .setTextColor(this.state.dark)
       .setFontStyle("normal")
-      .setFontSize(this.state.bodyFontSize + 2)
+      .setFontSize(this.state.bodyFontSize + 1)
       .splitTextToSize(
         subtitleTxt,
-        this.state.pageWidth - 2 * (this.state.padding + 15)
+        this.state.pageWidth - 2 * this.state.padding
       );
     doc.text(
       subtitle,
@@ -679,16 +709,16 @@ class PdfButton extends Component {
     doc.setFontStyle("bold");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize);
-    doc.text("Elradiator(er)", this.state.textRightX, radiators);
+    doc.text("Samlet elvarme", this.state.textRightX, radiators);
 
     doc.setFont("helvetica");
     doc.setFontStyle("normal");
     doc.setTextColor(this.state.dark);
     doc.setFontSize(this.state.bodyFontSize);
     doc.text(
-      this.props.data.caclulatedUsage.heating.radiators +
+      this.props.data.caclulatedUsage.heating.electricHeating +
         " / " +
-        this.props.data.caclulatedUsage.heating.radiators +
+        this.props.data.caclulatedUsage.heating.electricHeatingAverage +
         " kWh.",
       this.state.textRightX,
       radiators + 4
@@ -698,9 +728,10 @@ class PdfButton extends Component {
     doc.roundedRect(
       this.state.barsRightX,
       radiators + 1,
-      this.props.data.caclulatedUsage.heating.radiators === 0
+      this.props.data.caclulatedUsage.heating.electricHeatingAverage === 0
         ? 3
-        : rel * this.props.data.caclulatedUsage.heating.radiators + 2,
+        : rel * this.props.data.caclulatedUsage.heating.electricHeatingAverage +
+            2,
       barHeight,
       1.5,
       1.5,
@@ -711,9 +742,9 @@ class PdfButton extends Component {
     doc.roundedRect(
       this.state.barsRightX,
       radiators - 1,
-      this.props.data.caclulatedUsage.heating.radiators === 0
+      this.props.data.caclulatedUsage.heating.electricHeating === 0
         ? 3
-        : rel * this.props.data.caclulatedUsage.heating.radiators + 2,
+        : rel * this.props.data.caclulatedUsage.heating.electricHeating + 2,
       barHeight,
       1.5,
       1.5,
@@ -721,51 +752,51 @@ class PdfButton extends Component {
     );
 
     //Electric
-    let pumps = radiators + this.state.barsSpacing;
-    doc.setFont("helvetica");
-    doc.setFontStyle("bold");
-    doc.setTextColor(this.state.dark);
-    doc.setFontSize(this.state.bodyFontSize);
-    doc.text("Varmepumpe(r)", this.state.textRightX, pumps);
+    // let pumps = radiators + this.state.barsSpacing;
+    // doc.setFont("helvetica");
+    // doc.setFontStyle("bold");
+    // doc.setTextColor(this.state.dark);
+    // doc.setFontSize(this.state.bodyFontSize);
+    // doc.text("Varmepumpe(r)", this.state.textRightX, pumps);
 
-    doc.setFont("helvetica");
-    doc.setFontStyle("normal");
-    doc.setTextColor(this.state.dark);
-    doc.setFontSize(this.state.bodyFontSize);
-    doc.text(
-      this.props.data.caclulatedUsage.heating.pumps +
-        " / " +
-        this.props.data.caclulatedUsage.heating.pumps +
-        " kWh.",
-      this.state.textRightX,
-      pumps + 4
-    );
+    // doc.setFont("helvetica");
+    // doc.setFontStyle("normal");
+    // doc.setTextColor(this.state.dark);
+    // doc.setFontSize(this.state.bodyFontSize);
+    // doc.text(
+    //   this.props.data.caclulatedUsage.heating.pumps +
+    //     " / " +
+    //     this.props.data.caclulatedUsage.heating.pumps +
+    //     " kWh.",
+    //   this.state.textRightX,
+    //   pumps + 4
+    // );
 
-    doc.setFillColor(this.state.sand);
-    doc.roundedRect(
-      this.state.barsRightX,
-      pumps + 1,
-      this.props.data.caclulatedUsage.heating.pumps === 0
-        ? 3
-        : rel * this.props.data.caclulatedUsage.heating.pumps + 2,
-      barHeight,
-      1.5,
-      1.5,
-      "F"
-    );
+    // doc.setFillColor(this.state.sand);
+    // doc.roundedRect(
+    //   this.state.barsRightX,
+    //   pumps + 1,
+    //   this.props.data.caclulatedUsage.heating.pumps === 0
+    //     ? 3
+    //     : rel * this.props.data.caclulatedUsage.heating.pumps + 2,
+    //   barHeight,
+    //   1.5,
+    //   1.5,
+    //   "F"
+    // );
 
-    doc.setFillColor(this.state.blue);
-    doc.roundedRect(
-      this.state.barsRightX,
-      pumps - 1,
-      this.props.data.caclulatedUsage.heating.pumps === 0
-        ? 3
-        : rel * this.props.data.caclulatedUsage.heating.pumps + 2,
-      barHeight,
-      1.5,
-      1.5,
-      "F"
-    );
+    // doc.setFillColor(this.state.blue);
+    // doc.roundedRect(
+    //   this.state.barsRightX,
+    //   pumps - 1,
+    //   this.props.data.caclulatedUsage.heating.pumps === 0
+    //     ? 3
+    //     : rel * this.props.data.caclulatedUsage.heating.pumps + 2,
+    //   barHeight,
+    //   1.5,
+    //   1.5,
+    //   "F"
+    // );
 
     doc.save("orsted-eltjek.pdf");
   };

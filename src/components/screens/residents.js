@@ -192,11 +192,11 @@ class Residents extends Component {
                   }
                 >
                   <div className="o-question-label">
-                    Er der nogen voksne hjemmegående i din husstand? Hvis ja,
-                    hvor mange?
+                    Er der nogen voksne der arbejder hjemme i din husstand? Hvis
+                    ja, hvor mange?
                     <br />
                     <span className="o-question-label-info">
-                      (Pensionist, på barsel eller lignende)
+                      (Pensionist, på barsel, selvstændig eller lignende)
                     </span>
                   </div>
                   <div className="o-select-container">

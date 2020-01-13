@@ -395,6 +395,8 @@ class QuestionsContainer extends Container {
     );
 
     console.log("--------------------------------------------------");
+    console.log("Xtra KWh", xtraKwh);
+    console.log("At home", atHome);
     console.log("Indtastet forbrug uden opvarmning", usagePredicted);
     console.log("Benchmark forbrug uden opvarmning", usageBenchmark);
     console.log("Over-/underforbrug", myPredictedUsage);
